@@ -254,7 +254,7 @@ export const Navbar = () => {
           isScrolled && 'border border-white/15 backdrop-blur-sm'
         )}
       >
-        <div className='flex w-full flex-row items-center justify-between px-2'>
+        <div className='flex w-full flex-row items-center justify-between gap-5 px-2'>
           <h2 className='text-xl font-bold text-white'>Dr . T</h2>
           {mobileMenuOpen ? (
             <IconX className='text-white' onClick={toggleMobileMenu} />
