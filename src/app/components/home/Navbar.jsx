@@ -1,9 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Button } from "../Button";
-import { OutlineButton } from "../OutlineButton";
 import { motion, AnimatePresence } from "framer-motion";
-import Aurora from "./Aurora";
 
 const navData = [
   { id: 1, title: "Hero" },
@@ -117,32 +115,6 @@ export const Navbar = () => {
           </AnimatePresence>
         </div>
       </header>
-
-      {/* Hero Section */}
-      <div id="hero" className="pt-[80px] scroll-mt-[80px] relative">
-        {/* Aurora Background */}
-        <Aurora
-          colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-          blend={0.5}
-          amplitude={1.0}
-          speed={0.5}
-        ></Aurora>
-
-        <div className="max-w-[1200px] mx-auto text-center md:py-12 px-6 relative z-10">
-          <h1 className="max-w-[380px] md:max-w-[640px] lg:max-w-[900px] mx-auto text-center my-6 text-white text-4xl md:text-5xl lg:text-6xl font-bold">
-            Master Every Stage of Your UX Career.
-          </h1>
-
-          <p className="max-w-[360px] md:max-w-[490px] lg:max-w-[500px] mx-auto text-base md:text-base lg:text-lg font-normal text-white/80">
-            Industry leaders with experience at major corporations and a history
-            of teaching design and UX at top universities nationwide.
-          </p>
-
-          <div className="flex justify-center gap-6 my-8">
-            <OutlineButton OutLine={"See Plans"} />
-          </div>
-        </div>
-      </div>
     </>
   );
 };

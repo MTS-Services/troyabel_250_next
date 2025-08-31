@@ -51,7 +51,7 @@ export default function SolutionSection() {
   return (
     <section
       id="solution"
-      className="scroll-mt-[80px] max-w-[1200px] mx-auto lg:my-24 md:my-16 my-12 px-4 sm:px-4 md:px-4 lg:px-4"
+      className="scroll-mt-[80px] max-w-7xl mx-auto lg:my-24 md:my-16 my-12 px-4 sm:px-4 md:px-4 lg:px-4"
     >
       {/* Eyebrow + Title */}
       <div className="text-center flex flex-col justify-center items-center md:text-left">

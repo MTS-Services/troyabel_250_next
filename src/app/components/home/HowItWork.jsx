@@ -25,7 +25,7 @@ export default function HowItWorks() {
 
   return (
     <section id="how it works" className="w-full bg-gradient-to-r from-[#0a0a0a] via-[#1a0f24] to-[#0a0a0a] text-white py-16">
-      <div className="max-w-[1200px] mx-auto px-6 text-center">
+      <div className="max-w-7xl mx-auto px-6 text-center">
         <SectionTitle
           heading={"How it works"}
           paragraph={"Follow these 4 steps to transform your career in UX"}

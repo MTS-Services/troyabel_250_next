@@ -33,7 +33,7 @@ export const FAQ = () => {
   };
 
   return (
-    <section className="max-w-[1200px] mx-auto lg:my-20 md:my-16 my-12 px-4 sm:px-4 md:px-4 lg:px-4">
+    <section className="max-w-7xl mx-auto lg:my-20 md:my-16 my-12 px-4 sm:px-4 md:px-4 lg:px-4">
       <div className="mx-auto px-4 max-w-[950px]">
         <SectionTitle
           heading={"FAQs"}
