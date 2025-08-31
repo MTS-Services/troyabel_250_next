@@ -405,7 +405,7 @@ export const Navbar = () => {
           isScrolled && 'border border-white/15 backdrop-blur-sm'
         )}
       >
-        <h2 className='text-lg font-bold text-white items-center pr-4'>
+        <h2 className='text-[12px] md:text-[16px] lg:text-[20px] font-bold text-white items-center transition-transform duration-500 hover:animate-spin inline-block'>
           Dr . T
         </h2>
 
@@ -463,7 +463,9 @@ export const Navbar = () => {
         )}
       >
         <div className='flex w-full flex-row items-center justify-between px-2'>
-          <h2 className='text-xl font-bold text-white'>Dr . T</h2>
+          <h2 className='text-[12px] md:text-[16px] lg:text-[20px] font-bold text-white items-center transition-transform duration-500 hover:animate-spin inline-block'>
+            Dr . T
+          </h2>
           {mobileMenuOpen ? (
             <IconX
               className='text-white'
