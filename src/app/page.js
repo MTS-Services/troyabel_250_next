@@ -1,25 +1,23 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import Lenis from "lenis";
-
-import { Navbar } from "./components/home/Navbar";
-import SolutionSection from "./components/home/SolutionSection";
-import HowItWorks from "./components/home/HowItWork";
-import TeamSection from "./components/home/TeamCard";
-import PricingSection from "./components/home/Pricing";
-import { FAQ } from "./components/home/FAQ";
-import { InteractiveCTA2 } from "./components/home/InteractiveCTA2";
-import Hero from "./components/home/Hero";
+import { useEffect } from 'react';
+import Lenis from 'lenis';
+import { Navbar } from './components/home/Navbar';
+import SolutionSection from './components/home/SolutionSection';
+import HowItWorks from './components/home/HowItWork';
+import TeamSection from './components/home/TeamCard';
+import PricingSection from './components/home/Pricing';
+import { FAQ } from './components/home/FAQ';
+import { InteractiveCTA2 } from './components/home/InteractiveCTA2';
+import Hero from './components/home/Hero';
 
 export default function Home() {
-
   useEffect(() => {
     const lenis = new Lenis({
       duration: 0.5,
-      easing: (t) => t*(2-t),
+      easing: (t) => t * (2 - t),
       smooth: true,
-      direction: "vertical",
+      direction: 'vertical',
       wheelMultiplier: 0.5,
     });
 
@@ -37,8 +35,8 @@ export default function Home() {
     <div>
       <Navbar />
       {/* <Navbar /> */}
-      <Hero/>
-      <main className="">
+      <Hero />
+      <main className=''>
         <SolutionSection />
         <HowItWorks />
         <TeamSection />
