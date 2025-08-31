@@ -9,7 +9,7 @@ import TeamSection from './components/home/TeamCard';
 import PricingSection from './components/home/Pricing';
 import { FAQ } from './components/home/FAQ';
 import { InteractiveCTA2 } from './components/home/InteractiveCTA2';
-import Hero from './components/home/Hero';
+import HeroSection from './components/home/HeroSection';
 
 export default function Home() {
   useEffect(() => {
@@ -36,8 +36,8 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      {/* <Navbar /> */}
-      {/* <Hero /> */}
+      {/* <HeroScrollZoom /> */}
+      <HeroSection />
       <main className=''>
         <SolutionSection />
         <HowItWorks />

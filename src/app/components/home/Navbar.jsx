@@ -392,9 +392,7 @@ export const Navbar = () => {
     <div
       className={cn(
         'fixed inset-x-0 top-4 z-50 mx-auto transition-all duration-500',
-        isScrolled
-          ? 'max-w-fit px-4 '
-          : 'max-w-[1200px] px-8 border border-white/15 rounded-full'
+        isScrolled ? 'max-w-fit px-4 ' : 'max-w-[1200px] px-8  '
       )}
     >
       {/* --- Desktop Navbar --- */}
@@ -458,7 +456,7 @@ export const Navbar = () => {
       {/* --- Mobile Navbar (unchanged) --- */}
       <div
         className={cn(
-          'relative z-50 mx-auto flex w-full flex-col items-center justify-between rounded-2xl bg-black/50 p-2 lg:hidden',
+          'relative z-50 mx-auto flex w-full flex-col items-center justify-between rounded-2xl bg-black/90 p-2 lg:hidden',
           isScrolled && 'border border-white/15 backdrop-blur-sm'
         )}
       >

@@ -192,8 +192,6 @@ const CardSwap = ({
       : child
   );
 
- 
-
   return (
     <div
       className="absolute transform translate-x-[5%] translate-y-[20%] 
@@ -250,74 +248,83 @@ const PricingSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [triggerIndex, setTriggerIndex] = useState(null);
   const activeItem = items[activeIndex];
-   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const modalHandler = () => {
     setIsOpen(true);
   };
 
   return (
-    <section
-      id="pricing"
-      className="max-w-[1200px] mx-auto my-16 px-4 sm:px-4 md:px-4 lg:px-4"
-    >
-      <SectionTitle
-        heading="Product Offerings"
-        paragraph="A simple, effective approach to deliver excellence."
-        title="Your path to excellence"
-      />
+ <section
+  id="pricing"
+  className="max-w-[1200px] mx-auto my-16 px-4 sm:px-6 md:px-8 lg:px-12"
+>
+  <SectionTitle
+    heading="Pricing"
+    paragraph="A simple, effective approach to deliver excellence."
+    title="Your path to excellence"
+  />
 
-      <div className="relative grid lg:grid-cols-2 grid-cols-1 gap-12 items-center min-h-[450px] my-auto">
-        {/* Left Side */}
-        <div className="space-y-6 col-span-1 order-2 lg:order-1 sm:mt-0 md:mt-0 lg:mt-0 mt-3">
-          <div className="flex items-center gap-3">
-            <activeItem.icon className="w-8 h-8 text-fuchsia-400" />
-            <h2 className="text-2xl font-bold text-white">
-              {activeItem.label}
-            </h2>
-          </div>
-          <p className="text-gray-300">{activeItem.blurb}</p>
-          <ul className="space-y-2 text-gray-200 list-disc list-inside">
-            {activeItem.points?.map((p, idx) => (
-              <li key={idx}>{p}</li>
-            ))}
-          </ul>
-          <p className="text-lg font-semibold text-fuchsia-300">
-            {activeItem.price}
-          </p>
-
-          <button
-            onClick={modalHandler}
-          className="inline-block mt-3 px-4 py-2 rounded-lg bg-gradient-to-r from-fuchsia-600 to-indigo-600 text-white font-medium">
-            {activeItem.cta.label}
-          </button>
-          <Modal isOpen={isOpen} setIsEditModalOpen={setIsOpen}/>
-        </div>
-
-        {/* Right Side Cards */}
-        <div className="relative flex justify-center items-center order-1 lg:order-2 mt-36 sm:mt-46 md:mt-46 lg:mt-0 mb-36 sm:mb-0 md:mb-0 lg:mb-0 w-full sm:max-w-[250px] md:max-w-[300px] lg:max-w-[400px] h-[220px] sm:h-[220px] md:h-[250px] lg:h-[300px]">
-          <CardSwap
-            width={220}
-            height={220}
-            cardDistance={40}
-            verticalDistance={40}
-            onCardChange={setActiveIndex}
-            triggerIndex={triggerIndex}
-          >
-            {items.map((item, idx) => (
-              <PricingCard
-                key={item.id}
-                onMouseEnter={() => setTriggerIndex(idx)}
-              >
-                <div className="text-white p-4 md:p-6 text-center">
-                  {item.label}
-                </div>
-              </PricingCard>
-            ))}
-          </CardSwap>
-        </div>
+  <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[450px] my-auto">
+    {/* Left Side */}
+    <div className="space-y-6 col-span-1 order-2 lg:order-1 mt-6 sm:mt-8 md:mt-0 lg:mt-0">
+      <div className="flex items-center gap-3">
+        <activeItem.icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-fuchsia-400" />
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+          {activeItem.label}
+        </h2>
       </div>
-    </section>
+
+      <p className="text-gray-300 text-sm sm:text-base md:text-lg">
+        {activeItem.blurb}
+      </p>
+
+      <ul className="space-y-2 text-gray-200 text-sm sm:text-base md:text-base list-disc list-inside">
+        {activeItem.points?.map((p, idx) => (
+          <li key={idx}>{p}</li>
+        ))}
+      </ul>
+
+      <p className="text-lg sm:text-xl md:text-2xl font-semibold text-fuchsia-300">
+        {activeItem.price}
+      </p>
+
+      <button
+        onClick={modalHandler}
+        className="inline-block mt-3 px-4 sm:px-6 py-2 sm:py-3 rounded-lg bg-gradient-to-r from-fuchsia-600 to-indigo-600 text-white font-medium text-sm sm:text-base md:text-lg"
+      >
+        {activeItem.cta.label}
+      </button>
+
+      <Modal isOpen={isOpen} setIsEditModalOpen={setIsOpen} />
+    </div>
+
+    {/* Right Side Cards */}
+    <div className="relative flex justify-center items-center order-1 lg:order-2 w-full sm:max-w-[250px] md:max-w-[300px] lg:max-w-[400px] h-[220px] sm:h-[240px] md:h-[260px] lg:h-[300px] mt-10 sm:mt-12 md:mt-0 mb-12 sm:mb-12 md:mb-0 lg:mb-0">
+      <CardSwap
+        width={220}
+        height={220}
+        cardDistance={40}
+        verticalDistance={40}
+        onCardChange={setActiveIndex}
+        triggerIndex={triggerIndex}
+      >
+        {items.map((item, idx) => (
+          <PricingCard
+            key={item.id}
+            onMouseEnter={() => setTriggerIndex(idx)}
+          >
+            <div className="text-white p-4 sm:p-5 md:p-6 text-center text-sm sm:text-base md:text-lg">
+              {item.label}
+            </div>
+          </PricingCard>
+        ))}
+      </CardSwap>
+    </div>
+  </div>
+</section>
+
+
   );
 };
 

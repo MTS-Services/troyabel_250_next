@@ -37,7 +37,7 @@ export default function TeamSection() {
       id="team"
       className="w-full bg-gradient-to-r from-[#0a0a0a] via-[#1a0f24] to-[#0a0a0a] text-white lg:py-12 md:py-9 sm:py-7 py-5"
     >
-      <div className="max-w-[1200px] mx-auto px-6 text-center">
+      <div className="max-w-7xl mx-auto px-6 text-center">
         <SectionTitle
           heading={"Team"}
           paragraph={
