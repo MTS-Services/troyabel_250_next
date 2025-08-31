@@ -7,19 +7,19 @@ export default function HowItWorks() {
   const steps = [
     {
       title: 'Free Discovery Call',
-      text: "We'll spend 45 minutes discussing your goals, background, and challenges.",
+      text: "We'll spend 45 minutes discussing your goals, background, and challenges. This is a no-obligation call to ensure we're a perfect fit.",
     },
     {
       title: 'The Custom Roadmap',
-      text: 'Our team will draft a personalized coaching plan with a customized timeline.',
+      text: 'Based on our call, our team will draft a personalized coaching plan—our blueprint for your success —which will include a customized timeline tailored to your needs and availability.',
     },
     {
       title: 'Hands-On Coaching',
-      text: 'Regular 1:1 sessions with actionable feedback, resources, and accountability.',
+      text: "Through regular 1:1 sessions with our team of professionals, we'll execute the plan. You'll get actionable feedback, resources, and the accountability you need to build your portfolio and skills.",
     },
     {
       title: 'Launch Your New Career',
-      text: "With a powerful portfolio and newfound confidence, you'll start applying and interviewing.",
+      text: "With a powerful portfolio and newfound confidence, you'll start applying and interviewing. Dr, T will be your strategic advisor right through to your final job offer.",
     },
   ];
 

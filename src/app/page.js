@@ -35,7 +35,7 @@ export default function Home() {
     <div>
       <Navbar />
       {/* <Navbar /> */}
-      <Hero />
+      {/* <Hero /> */}
       <main className=''>
         <SolutionSection />
         <HowItWorks />
