@@ -14,11 +14,11 @@ import Hero from './components/home/Hero';
 export default function Home() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.5,
+      duration: 0.2,
       easing: (t) => t * (2 - t),
       smooth: true,
       direction: 'vertical',
-      wheelMultiplier: 0.5,
+      wheelMultiplier: 0.2,
     });
 
     function raf(time) {
