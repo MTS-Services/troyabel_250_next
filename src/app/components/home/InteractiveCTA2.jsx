@@ -3,7 +3,7 @@ import { H2 } from "../HeadingStyle";
 
 export const InteractiveCTA2 = () => {
   return (
-    <section className="max-w-[1200px] mx-auto lg:my-16 md:my-12 my-8 px-4 sm:px-4 md:px-4 lg:px-4">
+    <section className="max-w-7xl mx-auto lg:my-16 md:my-12 my-8 px-4 sm:px-4 md:px-4 lg:px-4">
       <div className="">
         <H2
           className="max-w-[280px] md:max-w-[520px] lg:max-w-[620px] 
@@ -16,7 +16,9 @@ export const InteractiveCTA2 = () => {
           your UX journey.
         </p>
         <div className="flex justify-center mt-5">
-          <Button id="hero" className={"btn"} text={"Return"} />
+          <a href="#hero">
+            <Button  id="hero" className={"btn"} text={"Return"} />
+          </a>
         </div>
       </div>
     </section>

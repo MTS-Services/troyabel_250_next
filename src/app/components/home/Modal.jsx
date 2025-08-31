@@ -1,8 +1,15 @@
+"use client"
+
 import { Dialog, Transition, DialogPanel } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
+import Modal2 from "../Modal2";
  
 const Modal = ({ setIsEditModalOpen, isOpen }) => {
+  const [isOpen2, setIsOpen2] = useState(false);
+  const modalHandler=()=>{
+    setIsOpen2(true)
+  }
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
@@ -138,13 +145,14 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
                     <FaArrowLeft className="mr-2 text-2xl" />
                     <span>Back</span>
                   </button>
-                  <button
+                  <button onClick={modalHandler}
                     type="button"
                     className="inline-flex justify-center rounded-md border border-transparent text-white bg-purple-800 px-6 py-3 text-lg font-medium hover:bg-purple-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition"
                   >
                     Confirm
                   </button>
                 </div>
+                <Modal2 isOpen={isOpen2} setIsEditModalOpen={setIsOpen2} />
               </DialogPanel>
             </Transition.Child>
           </div>
