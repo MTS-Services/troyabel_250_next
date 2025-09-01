@@ -40,7 +40,7 @@ const Modal2 = ({ setIsEditModalOpen, isOpen }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <DialogPanel className="w-full max-w-7xl transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all">
+              <DialogPanel className="w-full max-w-7xl  transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all">
                 {/* Main content: 2 sections */}
                 {/* Main content: 2 sections */}
                 <div className="flex flex-col md:flex-row p-0">
