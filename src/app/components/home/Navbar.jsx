@@ -676,7 +676,7 @@ export const Navbar = () => {
           isScrolled && 'border border-white/15 backdrop-blur-sm'
         )}
       >
-        <div className='flex w-full flex-row items-center justify-between px-2'>
+        <div className='flex w-full flex-row items-center justify-between px-4 gap-4'>
           <div className='transition-transform duration-500 hover:animate-spin'>
             {isScrolled ? (
               <img
