@@ -14,7 +14,9 @@ const OpenAppointmentButton = () => {
         Book a Free Discovery Call
       </button>
 
-      <FirstModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <div className="z-50 fixed mt-4">
+        <FirstModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      </div>
     </>
   );
 };

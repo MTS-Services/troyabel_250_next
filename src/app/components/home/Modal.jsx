@@ -1,15 +1,16 @@
-"use client"
+"use client";
 
 import { Dialog, Transition, DialogPanel } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
-import Modal2 from "../Modal2";
- 
+//import Modal2 from "../Modal2";
+import SuccessModal from "./SuccessModal";
+
 const Modal = ({ setIsEditModalOpen, isOpen }) => {
   const [isOpen2, setIsOpen2] = useState(false);
-  const modalHandler=()=>{
-    setIsOpen2(true)
-  }
+  const modalHandler = () => {
+    setIsOpen2(true);
+  };
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
@@ -28,7 +29,7 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
         >
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
- 
+
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
@@ -48,7 +49,7 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
                 >
                   Consultation (45-minutes)
                 </Dialog.Title>
- 
+
                 {/* Main content: 2 sections */}
                 <div className="flex flex-col md:flex-row gap-6 p-6">
                   {/* Left section: Event Details */}
@@ -73,7 +74,7 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
                     </p>
                     <p className="text-gray-500 text-lg">Asia/Dhaka</p>
                   </div>
- 
+
                   {/* Right section: Form */}
                   <div className="flex-1 bg-gray-50 p-6 rounded-lg space-y-6 max-h-[500px] overflow-y-auto">
                     <div>
@@ -86,7 +87,7 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
                         placeholder="Enter your name"
                       />
                     </div>
- 
+
                     <div>
                       <label className="block text-xl font-semibold text-gray-700">
                         Email Address*
@@ -97,7 +98,7 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
                         placeholder="Enter your email"
                       />
                     </div>
- 
+
                     <div>
                       <label className="block text-xl font-semibold text-gray-700">
                         What's the #1 thing you're hoping to get out of our
@@ -109,7 +110,7 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
                         placeholder="Your answer"
                       />
                     </div>
- 
+
                     <div>
                       <label className="block text-xl font-semibold text-gray-700">
                         Which area of UX are you most interested in?
@@ -121,7 +122,7 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
                         <option>I'm still figuring it out!</option>
                       </select>
                     </div>
- 
+
                     <div>
                       <label className="block text-xl font-semibold text-gray-700">
                         Your Phone Number
@@ -134,7 +135,7 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
                     </div>
                   </div>
                 </div>
- 
+
                 {/* Footer / Buttons */}
                 <div className="mt-6 flex justify-end p-6 gap-4">
                   <button
@@ -145,14 +146,18 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
                     <FaArrowLeft className="mr-2 text-2xl" />
                     <span>Back</span>
                   </button>
-                  <button onClick={modalHandler}
+                  <button
+                    onClick={modalHandler}
                     type="button"
                     className="inline-flex justify-center rounded-md border border-transparent text-white bg-purple-800 px-6 py-3 text-lg font-medium hover:bg-purple-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 transition"
                   >
                     Confirm
                   </button>
                 </div>
-                <Modal2 isOpen={isOpen2} setIsEditModalOpen={setIsOpen2} />
+                <SuccessModal
+                  isOpen={isOpen2}
+                  setIsEditModalOpen={setIsOpen2}
+                />
               </DialogPanel>
             </Transition.Child>
           </div>
@@ -161,7 +166,5 @@ const Modal = ({ setIsEditModalOpen, isOpen }) => {
     </Transition>
   );
 };
- 
+
 export default Modal;
- 
- 
