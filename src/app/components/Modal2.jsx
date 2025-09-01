@@ -100,9 +100,8 @@ const Modal2 = ({ setIsEditModalOpen, isOpen }) => {
                           onClick={() => setIsModalOpen(true)}
                           className="underline cursor-pointer "
                         >
-                          Reschedule
-                        </button>
-                        or <button className="underline cursor-pointer">cancel</button>
+                          Reschedule 
+                        </button>  <span> or </span><button className="underline cursor-pointer">cancel</button>
                       </span>
                     </div>
  
