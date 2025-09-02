@@ -463,6 +463,7 @@ import {
   Layers3,
   BrainCircuit,
 } from 'lucide-react';
+import OpenAppointmentButton from '../OpenAppointmentButton';
 
 // --- UPDATED: Data for the pricing plans with your new content ---
 const pricingPlans = [
@@ -553,13 +554,14 @@ const PricingSection = () => {
             </p>
 
             {/* CTA Button */}
-            <button
+            {/* <button
               onClick={() => setIsOpen(true)}
               className='flex items-center justify-center gap-2 mt-auto w-full px-6 py-3 rounded-lg bg-purple-600 text-white font-medium text-base hover:bg-purple-700 transition-colors'
             >
               {plan.cta.label}
               <ArrowRight className='w-4 h-4' />
-            </button>
+            </button> */}
+            <OpenAppointmentButton />
 
             {/* Render features only if they exist */}
             {plan.features && plan.features.length > 0 && (
