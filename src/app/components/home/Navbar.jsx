@@ -144,7 +144,7 @@ export const Navbar = () => {
           <AnimatePresence initial={false}>
             <motion.div
               key={active}
-              className='absolute inset-y-0 my-auto h-9 rounded-full bg-blue-600'
+              className='absolute inset-y-0 my-auto h-9 rounded-full bg-[#A63EE7]'
               initial={{ x: `${getNavIndex(prevActive) * 100}%` }}
               animate={{ x: `${getNavIndex(active) * 100}%` }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
