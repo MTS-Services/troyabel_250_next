@@ -100,13 +100,13 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
 
   return (
     <div
-      className='fixed mt-14 inset-0 z-50 flex justify-center items-start pt-10 sm:pt-16 overflow-auto bg-black/60'
+      className='fixed mt-14 inset-0 z-50 flex justify-center items-start pt-10 sm:pt-16 bg-black/60'
       onWheel={(e) => e.stopPropagation()}
     >
       <div
-        className='bg-gray-950 border-2 border-white/15 text-white rounded-2xl p-4 sm:p-6 shadow-xl
-               w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl
-               min-h-[500px] sm:min-h-[600px] md:min-h-[700px] relative'
+        className='bg-gray-950 border-2 border-white/15 text-white rounded-2xl 
+               p-4 sm:p-6 shadow-xl w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl
+               max-h-[90vh] overflow-y-auto relative'
       >
         {/* Close button */}
         <button
@@ -135,7 +135,7 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
               </p>
             </div>
           </div>
-          <div className='w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center text-3xl sm:text-5xl font-bold mt-4 sm:mt-0'>
+          <div className='w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center text-3xl sm:text-5xl font-bold mt-4 sm:mt-0 lg:mr-16 md:mr-14 sm:mr-12 mr-10'>
             <Image
               src='/image/logo/logophone.png'
               alt='Logo'
@@ -153,7 +153,7 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
               Consultation (45-minutes)
             </h2>
           </section>
-          <div className='text-[#ACADBC] text-base sm:text-lg mt-2 sm:mt-0'>
+          <div className='text-[#ACADBC] text-base sm:text-lg mt-2 sm:mt-0 lg:mr-16 md:mr-14 sm:mr-12 mr-10'>
             ⏱ 45 mins
           </div>
         </div>
@@ -161,7 +161,7 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
         {/* Calendar and Time Slots */}
         <div className='grid gap-6 mt-8 sm:gap-8 sm:grid-cols-1 md:grid-cols-3'>
           {/* Calendar */}
-          <div className='md:col-span-2'>
+          <div className='md:col-span-2 overflow-y-auto max-h-[400px]'>
             <div className='flex justify-between items-center mb-4'>
               <button
                 className='p-2 rounded-full hover:bg-gray-800'
@@ -188,7 +188,7 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
             </div>
 
             {/* Days */}
-            <div className='grid grid-cols-5 sm:grid-cols-7 gap-1 sm:gap-2'>
+            <div className='grid grid-cols-7 gap-1 sm:gap-2'>
               {Array.from({ length: daysInMonth }, (_, i) => i + 1).map(
                 (day) => {
                   const isToday =
@@ -247,7 +247,7 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
           </h1>
 
           {open && (
-            <div className='absolute bottom-full mb-2 w-full bg-white border border-gray-600 rounded-lg max-h-40 overflow-y-auto z-50'>
+            <div className='absolute top-full mt-2 w-full bg-white border border-gray-600 rounded-lg max-h-40 overflow-y-auto z-50'>
               {timezones.map((tz, idx) => (
                 <div
                   key={idx}
