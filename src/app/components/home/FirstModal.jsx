@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Modal from "./Modal";
+
+import InfoModal from "./InfoModal";
 
 const FirstModal = ({ isOpen, onClose }) => {
   const today = new Date();
@@ -13,16 +14,6 @@ const FirstModal = ({ isOpen, onClose }) => {
   );
   const [open, setOpen] = useState(false);
   const [isTimeModalOpen, setIsTimeModalOpen] = useState(false);
-
-  const modalHandler = () => setIsTimeModalOpen(true);
-
-  const timezones = [
-    "(GMT+05:30) India Standard Time",
-    "(GMT+06:00) Bangladesh Standard Time",
-    "(GMT+07:00) Thailand Standard Time",
-    "(GMT+08:00) China Standard Time",
-    "(GMT+09:00) Japan Standard Time",
-  ];
 
   const times = [
     "10:30pm",
@@ -41,6 +32,14 @@ const FirstModal = ({ isOpen, onClose }) => {
     "01:45am",
     "02:00am",
     "02:15am",
+  ];
+
+  const timezones = [
+    "(GMT+05:30) India Standard Time",
+    "(GMT+06:00) Bangladesh Standard Time",
+    "(GMT+07:00) Thailand Standard Time",
+    "(GMT+08:00) China Standard Time",
+    "(GMT+09:00) Japan Standard Time",
   ];
 
   const monthNames = [
@@ -78,14 +77,28 @@ const FirstModal = ({ isOpen, onClose }) => {
     }
   };
 
+  const modalHandler = () => {
+    setIsTimeModalOpen(true);
+  };
+
+  // Lock background scroll when modal is open
+  useEffect(() => {
+    if (isOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+    return () => (document.body.style.overflow = "auto");
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/60 z-50 flex justify-center items-start pt-10 sm:pt-16 overflow-auto">
+    <div
+      className="fixed mt-14 inset-0 z-50 flex justify-center items-start pt-10 sm:pt-16 overflow-auto bg-black/60"
+      onWheel={(e) => e.stopPropagation()}
+    >
       <div
-        className="bg-gray-950 border-2 border-white/15 text-white rounded-2xl p-4 sm:p-6 shadow-xl 
-               w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl 
-               min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px] relative"
+        className="bg-gray-950 border-2 border-white/15 text-white rounded-2xl p-4 sm:p-6 shadow-xl
+                      w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl 
+                      min-h-[500px] sm:min-h-[600px] md:min-h-[700px]  relative"
       >
         {/* Close button */}
         <button
@@ -108,7 +121,7 @@ const FirstModal = ({ isOpen, onClose }) => {
               <p className="text-gray-400 text-sm">Founder and Lead UX Coach</p>
             </div>
           </div>
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#A63EE7] text-black flex items-center justify-center text-3xl sm:text-5xl font-bold">
+          <div className="w-16 mr-22 h-16 sm:w-20 sm:h-20 rounded-full bg-[#A63EE7] text-black flex items-center justify-center text-3xl sm:text-5xl font-bold">
             drt
           </div>
         </div>
@@ -118,11 +131,13 @@ const FirstModal = ({ isOpen, onClose }) => {
           <section className="bg-transparent border border-[#A63EE7] px-4 py-2 rounded-full text-center w-full sm:w-auto">
             <h2 className="text-sm sm:text-base">Consultation (45-minutes)</h2>
           </section>
-          <div className="text-gray-300 text-base sm:text-lg">⏱ 45 mins</div>
+          <div className="text-gray-300 mr-20  text-base sm:text-lg">
+            ⏱ 45 mins
+          </div>
         </div>
 
         <div className="grid gap-8 mt-8 sm:gap-10 sm:grid-cols-1 md:grid-cols-3">
-          {/* Calendar - 2/3 width on md/lg */}
+          {/* Calendar */}
           <div className="md:col-span-2">
             <div className="flex justify-between items-center mb-4">
               <button
@@ -168,12 +183,11 @@ const FirstModal = ({ isOpen, onClose }) => {
                     <button
                       key={day}
                       onClick={() => setSelectedDate(day)}
-                      className={`h-10 w-10 sm:h-12 sm:w-12 rounded-lg text-xs sm:text-sm
-                  ${
-                    highlight
-                      ? "bg-purple-600 text-white"
-                      : "bg-white/15 hover:bg-gray-700"
-                  }`}
+                      className={`h-10 w-10 sm:h-12 sm:w-12 rounded-lg text-xs sm:text-sm ${
+                        highlight
+                          ? "bg-purple-600 text-white"
+                          : "bg-white/15 hover:bg-gray-700"
+                      }`}
                     >
                       {day}
                     </button>
@@ -186,18 +200,21 @@ const FirstModal = ({ isOpen, onClose }) => {
           {/* Time Slots */}
           <div className="flex flex-col items-center">
             <h4 className="text-base sm:text-lg font-semibold mb-4">Monday</h4>
-            <div className="grid gap-3 w-full sm:grid-cols-2 md:flex md:flex-col md:h-72 md:overflow-y-auto">
+            <div
+              className="flex flex-col w-full md:max-h-72 md:overflow-y-auto gap-3 sm:grid sm:grid-cols-2 md:flex md:flex-col"
+              onWheel={(e) => e.stopPropagation()} // Prevent scroll from bubbling to modal/page
+            >
               {times.map((time) => (
                 <button
                   key={time}
                   onClick={modalHandler}
                   className="w-full sm:w-auto h-20 sm:h-24 py-3 rounded-lg border border-purple-600 
-                         hover:bg-purple-600 hover:text-white transition text-sm sm:text-base"
+                             hover:bg-purple-600 hover:text-white transition text-sm sm:text-base"
                 >
                   {time}
                 </button>
               ))}
-              <Modal
+              <InfoModal
                 isOpen={isTimeModalOpen}
                 setIsEditModalOpen={setIsTimeModalOpen}
               />

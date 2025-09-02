@@ -1,6 +1,4 @@
-"use client";
-import { useEffect } from "react";
-import Lenis from "lenis";
+'use client';
 
 import { Navbar } from "./components/home/Navbar";
 import SolutionSection from "./components/home/SolutionSection";
@@ -10,15 +8,19 @@ import PricingSection from "./components/home/Pricing";
 import { FAQ } from "./components/home/FAQ";
 import { InteractiveCTA2 } from "./components/home/InteractiveCTA2";
 import HeroSection from "./components/home/HeroSection";
+import { useEffect } from 'react';
+import Lenis from 'lenis';
 
 export default function Home() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.5,
-      easing: (t) => t * (2 - t),
+      duration: 1.2,
+
+      wheelMultiplier: 1,
+
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
-      direction: "vertical",
-      wheelMultiplier: 0.5,
+      direction: 'vertical',
     });
 
     function raf(time) {
@@ -35,7 +37,7 @@ export default function Home() {
     <div>
       <Navbar />
       <HeroSection />
-      <main className="">
+      <main className=''>
         <SolutionSection />
         <HowItWorks />
         <TeamSection />
