@@ -8,8 +8,8 @@ import {
   AnimatePresence,
 } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
-import { Button } from '../Button';
 import { cn } from '@/app/lib/utils';
+import { HiArrowUpRight } from 'react-icons/hi2';
 
 const navData = [
   { id: 'hero', title: 'Hero', href: '#hero' },
@@ -109,7 +109,7 @@ export const Navbar = () => {
     <div
       className={cn(
         'fixed inset-x-0 top-4 z-50 mx-auto transition-all duration-500',
-        isScrolled ? 'max-w-fit px-4' : 'max-w-[1200px] px-8'
+        isScrolled ? 'max-w-fit px-4' : 'max-w-7xl px-8'
       )}
     >
       {/* --- Desktop Navbar --- */}
@@ -178,8 +178,19 @@ export const Navbar = () => {
           ))}
         </div>
 
-        <div className='pl-4'>
-          <Button text={'Book a call'} />
+        <div className='pl-2'>
+          <button
+            className={cn(
+              'flex items-center justify-center gap-2 rounded-lg bg-[#A63EE7] text-sm font-medium text-white transition-all duration-300',
+              isScrolled ? 'h-10 w-10 ' : 'px-3 py-2 lg:px-6 lg:py-[10px]'
+            )}
+          >
+            {!isScrolled && 'Book a call'}
+
+            <span>
+              <HiArrowUpRight />
+            </span>
+          </button>
         </div>
       </div>
 
