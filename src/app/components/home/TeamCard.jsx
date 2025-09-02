@@ -93,7 +93,7 @@ function TeamCard({ member, flipped }) {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="w-[460px] h-[570px]"
+      className="w-[430px] h-[510px]"
     >
       <div className="w-full h-full relative" style={{ perspective: "1000px" }}>
         <motion.div
@@ -107,6 +107,23 @@ function TeamCard({ member, flipped }) {
             className="absolute w-full h-full top-0 left-0 bg-[#A63EE7]/5 border border-white/20 rounded-2xl flex flex-col p-5"
             style={{ backfaceVisibility: "hidden" }}
           >
+            <div className="flex items-center lg:gap-6 md:gap-5 sm:gap-4 gap-4">
+                <div className="w-32 h-32 rounded-full overflow-hidden flex items-center justify-center">
+                  <img
+                    src={member.headshot}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="my-auto">
+                  <h3 className="text-[20px] font-medium text-white/90 w-full h-full rounded-full">
+                    {member.name}
+                  </h3>
+                  <p className="text-[16px] font-medium text-[#ACADBC] mb-2">
+                    {member.role}
+                  </p>
+                </div>
+              </div>
             <div className="flex flex-col items-center my-auto">
               <p className="text-base text-white/80 text-center">
                 {member.front}
@@ -133,7 +150,7 @@ function TeamCard({ member, flipped }) {
             }}
           >
             <div className="flex flex-col justify-center h-full">
-              <div className="flex items-center lg:gap-6 md:gap-5 sm:gap-4 gap-4">
+              {/* <div className="flex items-center lg:gap-6 md:gap-5 sm:gap-4 gap-4">
                 <div className="w-32 h-32 rounded-full overflow-hidden flex items-center justify-center">
                   <img
                     src={member.headshot}
@@ -149,7 +166,7 @@ function TeamCard({ member, flipped }) {
                     {member.role}
                   </p>
                 </div>
-              </div>
+              </div> */}
 
               <div className="flex flex-col items-center my-auto py-4">
                 <p className="text-base text-white/70">{member.back}</p>
