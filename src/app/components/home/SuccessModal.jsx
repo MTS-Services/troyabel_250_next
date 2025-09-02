@@ -6,32 +6,40 @@ import { RxCrossCircled } from 'react-icons/rx';
 import { IoMdClose } from 'react-icons/io'; // Close icon
 import FirstModal from './FirstModal';
 
-const SuccessModal = ({ isOpen, onCloseAll }) => {
+const SuccessModal = ({
+  isOpen,
+  onCloseAll,
+  formData,
+  onClose,
+  onOpenSecond,
+  onClose2,
+  onClose3,
+}) => {
   const [cancel, setCancel] = useState(false);
   const [cancelModal, setCancelModal] = useState(false);
   const [footer, setFooter] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showCloseIcon, setShowCloseIcon] = useState(false);
- 
+  console.log(formData);
+const handleCancel = () => {
+  setCancel(true);
+  setFooter(false);
+};
 
+const handleCancelModal = () => {
+  setCancelModal(true);
+  setCancel(false);
+  setShowCloseIcon(true);
+};
+
+const handleNevermind = () => {
+  setCancel(false);
+  setCancelModal(false);
+  setFooter(true);
+};
   if (!isOpen) return null;
 
-  const handleCancel = () => {
-    setCancel(true);
-    setFooter(false);
-  };
-
-  const handleCancelModal = () => {
-    setCancelModal(true);
-    setCancel(false);
-    setShowCloseIcon(true);
-  };
-
-  const handleNevermind = () => {
-    setCancel(false);
-    setCancelModal(false);
-    setFooter(true);
-  };
+  
 
   return (
     <div
@@ -87,7 +95,10 @@ const SuccessModal = ({ isOpen, onCloseAll }) => {
               <label className='block text-[#6D6D6D] font-semibold mb-4 mt-6 text-[18px]'>
                 Event Name
               </label>
-              <div className='w-full sm:w-[520px] h-[45px] border border-gray-300 rounded-xl px-3 py-4 pointer-events-none'></div>
+              <div className='w-full sm:w-[520px] h-[45px] border border-gray-300 rounded-xl text-[#6D6D6D] px-3 py-4 pointer-events-none'>
+                Consultation (45-minutes) between Dr. Troy Abel and{' '}
+                {formData.name}
+              </div>
             </div>
             <div>
               <label className='block text-[#6D6D6D] font-semibold mb-4 mt-6 text-[18px]'>
@@ -99,13 +110,23 @@ const SuccessModal = ({ isOpen, onCloseAll }) => {
               <label className='block text-[#6D6D6D] font-semibold mb-4 mt-6 text-[18px]'>
                 Attendees
               </label>
-              <div className='w-full sm:w-[520px] h-[45px] border border-gray-300 rounded-xl px-3 py-4 pointer-events-none'></div>
+              <div className='w-full sm:w-[520px] h-[80px] border border-gray-300 rounded-xl px-3 py-4 pointer-events-none'>
+                <h1 className='text-[#6D6D6D]'>
+                  Dr. Troy Abel{' '}
+                  <span className='text-sm bg-purple-300 p-1 rounded'>
+                    Host
+                  </span>
+                </h1>
+                <h1 className='text-[#6D6D6D]'>{formData.name}</h1>
+              </div>
             </div>
             <div>
               <label className='block text-[#6D6D6D] font-semibold mb-4 mt-6 text-[18px]'>
                 Location
               </label>
-              <div className='w-full sm:w-[520px] h-[45px] border border-gray-300 rounded-xl px-3 py-4 pointer-events-none'></div>
+              <div className='w-full text-[#6D6D6D] sm:w-[520px] h-[45px] border border-gray-300 rounded-xl px-3 py-4 pointer-events-none '>
+                <a href='' className='pb-2'>Google Meet </a>
+              </div>
             </div>
           </div>
           <div>
@@ -117,12 +138,12 @@ const SuccessModal = ({ isOpen, onCloseAll }) => {
                 What's the #1 thing you're hoping to get out of our
                 conversation?
               </h1>
-              <p className='text-gray-400'>mobile</p>
+              <p className='text-[#6D6D6D]'>{formData.goal}</p>
               <h1 className='text-[16px] text-black font-bold'>
                 Which area of UX are you most interested in? (e.g., UX/UI
                 Design, UX Research, UX Strategy, I'm still figuring it out!)
               </h1>
-              <p className='text-gray-400'>mobile</p>
+              <p className='text-[#6D6D6D]'>{formData.interest}</p>
             </div>
           </div>
 
@@ -164,16 +185,19 @@ const SuccessModal = ({ isOpen, onCloseAll }) => {
                 <span
                   onClick={() => {
                     setIsModalOpen(true);
+                    onClose2;
+                    onClose3;
+
                     onClose(); // Close SuccessModal when FirstModal opens
                   }}
-                  className='underline cursor-pointer'
+                  className='underline cursor-pointer text-[#A63EE7]'
                 >
                   Reschedule
                 </span>{' '}
                 or{' '}
                 <span
                   onClick={handleCancel}
-                  className='underline cursor-pointer'
+                  className='underline cursor-pointer text-[#A63EE7]'
                 >
                   Cancel
                 </span>
@@ -182,6 +206,7 @@ const SuccessModal = ({ isOpen, onCloseAll }) => {
                 <FirstModal
                   isOpen={isModalOpen}
                   onClose={() => setIsModalOpen(false)}
+                  onOpenSecond={onOpenSecond}
                 />
               )}
             </>
