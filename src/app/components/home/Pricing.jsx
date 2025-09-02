@@ -283,6 +283,173 @@
 
 //=================================================//
 
+// 'use client';
+
+// import React, { useState } from 'react';
+// import { SectionTitle } from '../SectionTitle';
+// import Modal from './Modal';
+// import { cn } from '@/app/lib/utils';
+// import {
+//   Check,
+//   ArrowRight,
+//   Sparkles,
+//   Layers3,
+//   BrainCircuit,
+//   Clock,
+// } from 'lucide-react';
+
+// // Data for the pricing plans
+// const pricingPlans = [
+//   {
+//     title: 'Basic',
+//     icon: Sparkles,
+//     price: '$480',
+//     description:
+//       'Essential tools and features for starting your journey with ease.',
+//     features: [
+//       'Basic workflow automation',
+//       'Basic chatbot development',
+//       '60 content request',
+//       'E-mail support',
+//       '1 consultation a month',
+//     ],
+//     cta: {
+//       label: 'Go with this plan',
+//       href: '#',
+//     },
+//   },
+//   {
+//     title: 'Professional',
+//     icon: Layers3,
+//     price: '$960',
+//     description:
+//       'Advanced capabilities designed to meet growing business needs.',
+//     features: [
+//       'Advance workflow automation',
+//       'Advance chatbot development',
+//       '150 content request',
+//       'E-mail support',
+//       '2 consultation a month',
+//     ],
+//     cta: {
+//       label: 'Go with this plan',
+//       href: '#',
+//     },
+//     isFeatured: true, // This will add a highlight to this card
+//   },
+//   {
+//     title: 'Basic',
+//     icon: Sparkles,
+//     price: '$480',
+//     description:
+//       'Essential tools and features for starting your journey with ease.',
+//     features: [
+//       'Basic workflow automation',
+//       'Basic chatbot development',
+//       '60 content request',
+//       'E-mail support',
+//       '1 consultation a month',
+//     ],
+//     cta: {
+//       label: 'Go with this plan',
+//       href: '#',
+//     },
+//   },
+
+//   // {
+//   //   title: 'Enterprises',
+//   //   icon: BrainCircuit,
+//   //   price: 'Custom',
+//   //   description:
+//   //     'Comprehensive solutions tailored for large-scale business success.',
+//   //   features: [
+//   //     'Custom workflow automation',
+//   //     'Custom chatbot development',
+//   //     'Unlimited content request',
+//   //     '24hr priority support',
+//   //     'Unlimited consultation a month',
+//   //   ],
+//   //   cta: {
+//   //     label: 'Schedule a call',
+//   //     href: '#', // You can link this to your modal or a contact page
+//   //   },
+//   // },
+// ];
+
+// // Main Pricing Section Component
+// const PricingSection = () => {
+//   const [isOpen, setIsOpen] = useState(false);
+
+//   return (
+//     <section id='pricing' className='max-w-7xl mx-auto my-16 px-6'>
+//       <SectionTitle
+//         heading='Product Offerings'
+//         paragraph='A simple, effective approach to deliver excellence.'
+//         title='Your path to excellence'
+//       />
+
+//       {/* Grid container for the pricing cards */}
+//       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16'>
+//         {pricingPlans.map((plan, index) => (
+//           <div
+//             key={index}
+//             className={cn(
+//               'flex flex-col p-8 rounded-2xl bg-[#1C1C1E] border border-white/10 transition-transform duration-300 hover:-translate-y-2',
+//               plan.isFeatured && 'ring-2 ring-purple-500' // Highlight for the featured plan
+//             )}
+//           >
+//             {/* Card Header */}
+//             <div className='flex items-center gap-3'>
+//               <plan.icon className='w-6 h-6 text-purple-400' />
+//               <h3 className='text-xl font-semibold text-white'>{plan.title}</h3>
+//             </div>
+
+//             {/* Price */}
+//             <div className='mt-6'>
+//               <span className='text-4xl font-bold text-white'>
+//                 {plan.price}
+//               </span>
+//               {plan.title !== 'Enterprises' && (
+//                 <span className='text-lg text-gray-400'>/month</span>
+//               )}
+//             </div>
+
+//             {/* Description */}
+//             <p className='mt-4 text-gray-400 text-base min-h-[70px]'>
+//               {plan.description}
+//             </p>
+
+//             {/* CTA Button */}
+//             <button
+//               onClick={() => setIsOpen(true)}
+//               className='flex items-center justify-center gap-2 mt-8 w-full px-6 py-3 rounded-lg bg-purple-600 text-white font-medium text-base hover:bg-purple-700 transition-colors'
+//             >
+//               {plan.cta.label}
+//               <ArrowRight className='w-4 h-4' />
+//             </button>
+
+//             {/* Divider */}
+//             <hr className='my-8 border-white/10' />
+
+//             {/* Features List */}
+//             <ul className='space-y-4 flex-grow'>
+//               {plan.features.map((feature, idx) => (
+//                 <li key={idx} className='flex items-center gap-3'>
+//                   <Check className='w-5 h-5 text-green-500 shrink-0' />
+//                   <span className='text-gray-300'>{feature}</span>
+//                 </li>
+//               ))}
+//             </ul>
+//           </div>
+//         ))}
+//       </div>
+//       <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+//     </section>
+//   );
+// };
+
+// export default PricingSection;
+
 'use client';
 
 import React, { useState } from 'react';
@@ -295,65 +462,54 @@ import {
   Sparkles,
   Layers3,
   BrainCircuit,
-  Clock,
 } from 'lucide-react';
 
-// Data for the pricing plans
+// --- UPDATED: Data for the pricing plans with your new content ---
 const pricingPlans = [
   {
-    title: 'Basic',
+    title: 'Career Transformation Accelerator',
     icon: Sparkles,
-    price: '$480',
+    price: 'Starting at $6,500',
     description:
-      'Essential tools and features for starting your journey with ease.',
+      'A fully customized, one-on-one mentorship to guide you through every step of the career change process.',
     features: [
-      'Basic workflow automation',
-      'Basic chatbot development',
-      '60 content request',
-      'E-mail support',
-      '1 consultation a month',
+      'Foundational design education',
+      'UX/UI design-focused training',
+      'Technical / software tutoring',
+      'The future of designing with AI',
+      'Customized portfolio case studies',
+      'UX Research exercises',
+      'Portfolio presentation guidelines',
+      'Interviewing coaching',
     ],
-    cta: {
-      label: 'Go with this plan',
-      href: '#',
-    },
+    cta: { label: 'Book the Accelerator' },
   },
   {
-    title: 'Professional',
-    icon: Layers3,
-    price: '$960',
-    description:
-      'Advanced capabilities designed to meet growing business needs.',
-    features: [
-      'Advance workflow automation',
-      'Advance chatbot development',
-      '150 content request',
-      'E-mail support',
-      '2 consultation a month',
-    ],
-    cta: {
-      label: 'Go with this plan',
-      href: '#',
-    },
-    isFeatured: true, // This will add a highlight to this card
-  },
-  {
-    title: 'Enterprises',
+    title: 'Designing with AI Level-up',
     icon: BrainCircuit,
-    price: 'Custom',
+    price: 'Starting at $2,500',
     description:
-      'Comprehensive solutions tailored for large-scale business success.',
+      'Master the next wave of user experience and learn to design human-centered AI products and features.',
     features: [
-      'Custom workflow automation',
-      'Custom chatbot development',
-      'Unlimited content request',
-      '24hr priority support',
-      'Unlimited consultation a month',
+      'Conversational design',
+      'Designing for prompt engines',
+      'AI UX Design',
+      'AI UX Strategy',
+      'Designing augmented user experiences',
+      'Agentic agent design',
     ],
-    cta: {
-      label: 'Schedule a call',
-      href: '#', // You can link this to your modal or a contact page
-    },
+    cta: { label: 'Book AI Level-Up' },
+    isFeatured: true,
+  },
+  {
+    title: 'Portfolio Level-Up',
+    icon: Layers3,
+    price: 'Starting at $1,500',
+    description:
+      'For experienced UX professionals aiming for a senior, lead, or principal role. Reframe your work to show strategic impact.',
+    features: ['2-3 customized portfolio design case studies'],
+    cta: { label: 'Book Portfolio Level-Up' },
+    // This will add a highlight to this card
   },
 ];
 
@@ -376,7 +532,7 @@ const PricingSection = () => {
             key={index}
             className={cn(
               'flex flex-col p-8 rounded-2xl bg-[#1C1C1E] border border-white/10 transition-transform duration-300 hover:-translate-y-2',
-              plan.isFeatured && 'ring-2 ring-purple-500' // Highlight for the featured plan
+              plan.isFeatured && 'ring-2 ring-purple-500'
             )}
           >
             {/* Card Header */}
@@ -390,37 +546,36 @@ const PricingSection = () => {
               <span className='text-4xl font-bold text-white'>
                 {plan.price}
               </span>
-              {plan.title !== 'Enterprises' && (
-                <span className='text-lg text-gray-400'>/month</span>
-              )}
             </div>
 
             {/* Description */}
-            <p className='mt-4 text-gray-400 text-base min-h-[70px]'>
+            <p className='mt-4 text-gray-400 text-base min-h-[100px]'>
               {plan.description}
             </p>
 
             {/* CTA Button */}
             <button
               onClick={() => setIsOpen(true)}
-              className='flex items-center justify-center gap-2 mt-8 w-full px-6 py-3 rounded-lg bg-purple-600 text-white font-medium text-base hover:bg-purple-700 transition-colors'
+              className='flex items-center justify-center gap-2 mt-auto w-full px-6 py-3 rounded-lg bg-purple-600 text-white font-medium text-base hover:bg-purple-700 transition-colors'
             >
               {plan.cta.label}
               <ArrowRight className='w-4 h-4' />
             </button>
 
-            {/* Divider */}
-            <hr className='my-8 border-white/10' />
-
-            {/* Features List */}
-            <ul className='space-y-4 flex-grow'>
-              {plan.features.map((feature, idx) => (
-                <li key={idx} className='flex items-center gap-3'>
-                  <Check className='w-5 h-5 text-green-500 shrink-0' />
-                  <span className='text-gray-300'>{feature}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Render features only if they exist */}
+            {plan.features && plan.features.length > 0 && (
+              <>
+                <hr className='my-8 border-white/10' />
+                <ul className='space-y-4 flex-grow'>
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} className='flex items-start gap-3'>
+                      <Check className='w-5 h-5 text-green-500 shrink-0 mt-1' />
+                      <span className='text-gray-300'>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
         ))}
       </div>
