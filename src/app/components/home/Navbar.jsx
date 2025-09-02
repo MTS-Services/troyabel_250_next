@@ -115,14 +115,14 @@ export const Navbar = () => {
       {/* --- Desktop Navbar --- */}
       <div
         className={cn(
-          'relative z-[60] mx-auto hidden flex-row items-center justify-between self-start rounded-full bg-black/50 py-2 transition-all duration-300 lg:flex',
+          'relative z-[60] mx-auto hidden flex-row items-center justify-between self-start  bg-black/50 py-2 transition-all duration-300 lg:flex',
           isScrolled ? 'px-4' : 'px-8',
           isScrolled && 'border border-white/15 backdrop-blur-sm'
         )}
       >
         {/* --- THIS IS THE UPDATED DESKTOP LOGO SECTION --- */}
         <div className='w-auto pr-4'>
-          <div className='transition-transform duration-500 hover:animate-spin'>
+          <div className='transition-transform duration-500'>
             {isScrolled ? (
               <img
                 src='/image/logo/logophone.png'
