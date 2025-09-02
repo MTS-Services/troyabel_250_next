@@ -213,12 +213,22 @@ export const Navbar = () => {
           )}
         >
           <div className='flex w-full flex-row items-center justify-between gap-4 px-4'>
-            <div className='transition-transform duration-500'>
-              <img
-                src='/image/logo/logophone.png'
-                alt='logo'
-                className='h-10 w-auto'
-              />
+            <div className='w-auto pr-4'>
+              <div className='transition-transform duration-500'>
+                {isScrolled ? (
+                  <img
+                    src='/image/logo/logophone.png'
+                    alt='logo'
+                    className='h-10 w-full'
+                  />
+                ) : (
+                  <img
+                    src='/image/logo/logodesktop.png'
+                    alt='logo'
+                    className='h-8 w-auto'
+                  />
+                )}
+              </div>
             </div>
 
             {mobileMenuOpen ? (
