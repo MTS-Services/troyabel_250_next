@@ -164,7 +164,7 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
           <div className='md:col-span-2 overflow-y-auto max-h-[400px]'>
             <div className='flex justify-between items-center mb-4'>
               <button
-                className='p-2 rounded-full hover:bg-gray-800'
+                className='p-2 rounded-full hover:bg-[#6D6D6D]'
                 onClick={handlePrevMonth}
               >
                 <ChevronLeft />
@@ -173,7 +173,7 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
                 {monthNames[currentMonth]} {currentYear}
               </h3>
               <button
-                className='p-2 rounded-full hover:bg-gray-800'
+                className='p-2 rounded-full hover:bg-[#6D6D6D]'
                 onClick={handleNextMonth}
               >
                 <ChevronRight />
@@ -204,7 +204,7 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
                       className={`h-10 w-10 sm:h-12 sm:w-12 rounded-lg text-xs sm:text-sm transition ${
                         highlight
                           ? 'bg-purple-600 text-white'
-                          : 'bg-white/30 hover:bg-gray-700'
+                          : 'bg-white/30 hover:bg-[#6D6D6D]'
                       }`}
                     >
                       {day}
@@ -242,12 +242,12 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
             className='inline-flex cursor-pointer items-center justify-between w-full text-[#ACADBC]'
             onClick={() => setOpen(!open)}
           >
-            🌍 {timezone}
+            🌍 {timezone} ......
             {open ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
           </h1>
 
           {open && (
-            <div className='absolute top-full mt-2 w-full bg-white border border-gray-600 rounded-lg max-h-40 overflow-y-auto z-50'>
+            <div className='absolute bottom-full mb-2 w-full bg-white border border-gray-600 rounded-lg max-h-40 overflow-y-auto z-50'>
               {timezones.map((tz, idx) => (
                 <div
                   key={idx}
