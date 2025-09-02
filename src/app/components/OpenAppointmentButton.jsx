@@ -22,3 +22,6 @@ const OpenAppointmentButton = () => {
 };
 
 export default OpenAppointmentButton;
+
+
+

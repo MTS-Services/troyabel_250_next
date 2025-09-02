@@ -589,9 +589,8 @@ const PricingSection = () => {
       className='max-w-[1200px] mx-auto my-16 px-6 overflow-hidden'
     >
       <SectionTitle
-        heading='Product Offerings'
         paragraph='A simple, effective approach to deliver excellence.'
-        title='Your path to excellence'
+        title='PRODUCT OFFERINGS'
       />
       <div className='relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[500px] mt-12'>
         <div className='space-y-6 order-2 lg:order-1'>
