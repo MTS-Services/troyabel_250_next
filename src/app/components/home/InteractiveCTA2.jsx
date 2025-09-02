@@ -1,26 +1,40 @@
-import { Button } from "../Button";
-import { H2 } from "../HeadingStyle";
+import React from "react";
 
 export const InteractiveCTA2 = () => {
+  const scrollToHero = () => {
+    const heroSection = document.getElementById("hero");
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <section className="max-w-7xl mx-auto lg:my-16 md:my-12 my-8 px-4 sm:px-4 md:px-4 lg:px-4">
-      <div className="">
-        <H2
-          className="max-w-[280px] md:max-w-[520px] lg:max-w-[620px] 
-                       text-[22px] md:text-[30px] lg:text-[40px] 
-                       font-medium text-white text-center mx-auto"
-          nameH2={"Ready to Transform Your UX Career?"}
-        />
-        <p className="lg:max-w-[390px] max-w-[270px]  mx-auto text-center md:text-base text-sm font-normal text-white/80 blur-[0.2px] md:mb-4 md:mt-3 my-3">
-          Book a free discovery call and let us guide you through every stage of
-          your UX journey.
-        </p>
-        <div className="flex justify-center mt-5">
-          <a href="#hero">
-            <Button  id="hero" className={"btn"} text={"Return"} />
-          </a>
-        </div>
+    <div>
+      {/* Fixed Floating Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button
+          onClick={scrollToHero}
+          className="flex items-center justify-center w-16 h-16 rounded-full
+                     bg-[#A63EE7] text-white font-medium shadow-lg
+                     transform hover:scale-110 transition-all duration-300"
+        >
+          {/* Arrow SVG */}
+          <svg
+            className="w-6 h-6 animate-bounce"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
+            />
+          </svg>
+        </button>
       </div>
-    </section>
+    </div>
   );
 };

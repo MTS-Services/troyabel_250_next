@@ -15,7 +15,7 @@ export default function HowItWorks() {
     },
     {
       title: 'Hands-On Coaching',
-      text: "Through regular 1:1 sessions with our team of professionals, we'll execute the plan. You'll get actionable feedback, resources, and the accountability you need to build your portfolio and skills.",
+      text: "1 sessions with our team of professionals, we'll execute the plan. You'll get actionable feedback, resources, and the accountability you need to build your portfolio and skills.",
     },
     {
       title: 'Launch Your New Career',
@@ -26,12 +26,10 @@ export default function HowItWorks() {
   return (
     <section
       id='how-it-works'
-      className='w-full bg-gradient-to-r from-[#0a0a0a] via-[#1a0f24] to-[#0a0a0a] text-white py-16'
+      className='w-full bg-gradient-to-r from-[#0a0a0a] via-[#1a0f24] to-[#0a0a0a] text-white lg:py-12 md:py-10 sm:py-8 my-6'
     >
       <div className='max-w-[1200px] mx-auto px-6 text-center'>
         <SectionTitle
-          heading={'How it works'}
-          paragraph={'Follow these 4 steps to transform your career in UX'}
           title={'A Simple, Proven Path to Success'}
         />
 
@@ -62,7 +60,7 @@ function FlipCard({ title, text }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className='w-full h-60 md:h-48'
+      className='w-full h-50 md:h-38'
     >
       <div
         className='w-full h-full relative cursor-pointer'
@@ -80,23 +78,24 @@ function FlipCard({ title, text }) {
         >
           {/* Front */}
           <div
-            className='absolute w-full h-full top-0 left-0 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center p-5'
+            className='absolute w-full h-full top-0 left-0 bg-white/5 border border-white/20 rounded-2xl flex items-center justify-center p-3'
             style={{ backfaceVisibility: 'hidden' }}
           >
-            <h3 className='text-lg font-medium text-white/90'>{title}</h3>
+            <h3 className='text-lg font-medium text-white/80'>{title}</h3>
           </div>
 
           {/* Back */}
           <div
-            className='absolute w-full h-full top-0 left-0 bg-[#A63EE7]/10 border border-white/20 rounded-2xl flex items-center justify-center p-5'
+            className='absolute w-full h-full top-0 left-0 bg-[#A63EE7]/10 border border-white/20 rounded-2xl flex items-center justify-center p-3'
             style={{
               backfaceVisibility: 'hidden',
               transform: 'rotateY(180deg)',
             }}
           >
-            <p className='text-sm md:text-base text-white/80'>{text}</p>
+            <p className='mt-2 text-base text-white/70'>{text}</p>
           </div>
         </div>
+        
       </div>
     </motion.div>
   );
