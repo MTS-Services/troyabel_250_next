@@ -36,6 +36,16 @@ const handleNevermind = () => {
   setCancel(false);
   setCancelModal(false);
   setFooter(true);
+  
+
+};
+const handleCloseAll = () => {
+  setCancel(false);
+  setCancelModal(false);
+  setFooter(true);
+  setShowCloseIcon(false);
+
+  if (onCloseAll) onCloseAll();
 };
   if (!isOpen) return null;
 
@@ -53,7 +63,7 @@ const handleNevermind = () => {
         {/* Close Button */}
         {showCloseIcon && (
           <button
-            onClick={onCloseAll}
+            onClick={handleCloseAll}
             className='absolute cursor-pointer top-4 right-4 text-gray-500 hover:text-black transition'
           >
             <IoMdClose className='text-3xl' />
