@@ -9,7 +9,6 @@ import TeamSection from "./components/home/TeamCard";
 import PricingSection from "./components/home/Pricing";
 import { FAQ } from "./components/home/FAQ";
 import { InteractiveCTA2 } from "./components/home/InteractiveCTA2";
-import HeroScrollZoom from "./components/home/HeroScrollZoom";
 import HeroSection from "./components/home/HeroSection";
 
 export default function Home() {
@@ -35,7 +34,6 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      {/* <HeroScrollZoom /> */}
       <HeroSection />
       <main className="">
         <SolutionSection />
