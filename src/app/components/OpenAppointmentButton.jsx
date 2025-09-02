@@ -1,10 +1,6 @@
 'use client';
 import { useState } from 'react';
 import FirstModal from './home/FirstModal';
-import InfoModal from './home/InfoModal';
-import SuccessModal from './home/SuccessModal';
-import { BsDot } from 'react-icons/bs';
-import { FiArrowRight } from 'react-icons/fi';
 const OpenAppointmentButton = () => {
   const [firstOpen, setFirstOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
@@ -26,10 +22,8 @@ const OpenAppointmentButton = () => {
   return (
     <>
       <button
-        onClick={() => setFirstOpen(true)}
-        className='relative flex items-center justify-center gap-2 px-6 py-2 rounded-full
-                       border border-[#A63EE7] bg-[#A63EE7] text-white font-medium overflow-hidden
-                       transition-all duration-500 ease-out group'
+        onClick={() => setIsModalOpen(true)}
+        className='px-6 py-3 bg-[#A63EE7]  text-white rounded-lg hover:bg-[#A63EE9]  transition cursor-pointer'
       >
         <span
           className='absolute inset-0 bg-black rounded-full scale-x-0 origin-left
