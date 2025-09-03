@@ -74,10 +74,9 @@ const pricingPlans = [
   },
 ];
 
-// --- UPDATED: Constant changed to 3 ---
 const MAX_VISIBLE_FEATURES = 3;
 
-// --- UPDATED: PricingCard component with layout fixes ---
+// --- UPDATED: PricingCard component with centered text ---
 const PricingCard = ({ plan }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const hasMoreFeatures = plan.features.length > MAX_VISIBLE_FEATURES;
@@ -89,31 +88,32 @@ const PricingCard = ({ plan }) => {
   return (
     <div
       className={cn(
-        // The flex flex-col is key to controlling the internal layout
         'flex flex-col p-8 rounded-2xl bg-[#1C1C1E] border border-white/10 transition-transform duration-300 hover:-translate-y-2',
         plan.isFeatured && 'ring-2 ring-[#A63EE7]'
       )}
     >
-      {/* Card Header */}
-      <div className='flex items-center gap-3'>
+      {/* --- MODIFIED: Added justify-center to center the header --- */}
+      <div className='flex items-center justify-center gap-3'>
         <plan.icon className='w-6 h-6 text-[#A63EE7]' />
         <h3 className='text-md font-semibold text-white'>{plan.title}</h3>
       </div>
 
-      {/* Price */}
-      <div className='mt-6'>
+      {/* --- MODIFIED: Added text-center to center the price --- */}
+      <div className='mt-6 text-center'>
         <span className='text-3xl font-bold text-white'>{plan.price}</span>
       </div>
 
-      {/* --- FIX: Description has a fixed height now to align the button below it --- */}
-      <p className='mt-4 h-52 text-base text-gray-400'>{plan.description}</p>
+      {/* --- MODIFIED: Added text-center to the description --- */}
+      <p className='mt-4 h-52 text-base text-gray-400 text-center'>
+        {plan.description}
+      </p>
 
-      {/* --- FIX: Consistent vertical margin for the button --- */}
-      <div className='my-8'>
+      {/* --- MODIFIED: Added flex justify-center to center the button --- */}
+      <div className='my-8 flex justify-center'>
         <OpenAppointmentButton />
       </div>
 
-      {/* Features List */}
+      {/* Features List (Intentionally left-aligned for readability) */}
       <hr className='border-white/10' />
       <div className='mt-8'>
         <ul className='space-y-4'>
@@ -145,7 +145,7 @@ const PricingCard = ({ plan }) => {
         </AnimatePresence>
       </div>
 
-      {/* --- FIX: This spacer div pushes the "See all details" button to the bottom --- */}
+      {/* This spacer div pushes the "See all details" button to the bottom */}
       <div className='flex-grow'></div>
 
       {/* "See all details" Button */}
@@ -164,7 +164,7 @@ const PricingCard = ({ plan }) => {
   );
 };
 
-// --- UPDATED: Main Pricing Section Component ---
+// Main Pricing Section Component (No changes needed here)
 const PricingSection = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -175,7 +175,6 @@ const PricingSection = () => {
         title='Coaching Plans'
       />
 
-      {/* --- FIX: Removed items-start to allow cards to stretch to equal height --- */}
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16'>
         {pricingPlans.map((plan, index) => (
           <PricingCard key={index} plan={plan} />

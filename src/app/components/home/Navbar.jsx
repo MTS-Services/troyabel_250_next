@@ -644,13 +644,8 @@ export const Navbar = () => {
                   </a>
                 ))}
                 <button
-<<<<<<< HEAD
-                  onClick={handleOpenModal}
-                  className='mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#A63EE7] px-3 py-3 text-base font-medium text-white'
-=======
                   onClick={() => setIsModalOpen(true)}
                   className='mt-4 flex w-full items-center justify-center gap-2 bg-[#A63EE7] rounded-lg px-3 py-3 text-base font-medium text-white'
->>>>>>> 1c2aebbbf6d44096f945d0b9b1acd6e68f677941
                 >
                   Book a Call <HiArrowUpRight />
                 </button>
