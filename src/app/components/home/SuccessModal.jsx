@@ -66,7 +66,7 @@ const SuccessModal = ({
         {showCloseIcon && (
           <button
             onClick={handleCloseAll}
-            className='absolute cursor-pointer top-4 right-4 text-gray-500 hover:text-black transition'
+            className='absolute cursor-pointer top-4 right-4 text-white hover:text-black transition'
           >
             <IoMdClose className='text-3xl' />
           </button>
