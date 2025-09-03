@@ -1,4 +1,4 @@
-// SuccessModal.jsx
+
 'use client';
 import React, { useState } from 'react';
 import { IoCheckmarkCircleSharp } from 'react-icons/io5';
@@ -11,10 +11,9 @@ const SuccessModal = ({
   isOpen,
   onCloseAll,
   formData,
-  onClose,
+
   onOpenSecond,
-  onClose2,
-  onClose3,
+
   onReshedule,
   time
 }) => {
@@ -186,7 +185,7 @@ const SuccessModal = ({
                     onClick={handleNevermind}
                     className='border-2 cursor-pointer text-center text-black w-[100px] h-[42px] text-[18px] rounded-xl border-black hover:bg-gray-200'
                   >
-                    Nevermind
+                    Never mind
                   </button>
                   <button
                     onClick={handleCancelModal}
@@ -205,11 +204,9 @@ const SuccessModal = ({
                 Need to make a change?{' '}
                 <span
                   onClick={() => {
-                    setIsModalOpen(true); // open FirstModal
-                    onClose2?.();          // close second modal if exists
-                    onClose3?.();          // close third modal if exists
+                           // close third modal if exists
                     onReshedule?.();       // call reschedule function if exists
-                    onClose?.();           // close SuccessModal
+                               // close SuccessModal
                   }}
                   className='underline cursor-pointer text-[#A63EE7]'
                 >

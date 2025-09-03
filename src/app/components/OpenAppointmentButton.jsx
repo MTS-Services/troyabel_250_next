@@ -9,7 +9,7 @@ const OpenAppointmentButton = () => {
   const [firstOpen, setFirstOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
   const [thirdOpen, setThirdOpen] = useState(false);
-   //  Lifted state for form data
+   
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,6 +26,12 @@ const OpenAppointmentButton = () => {
     setFirstOpen(false);
     setSecondOpen(false);
     setThirdOpen(false);
+     setFormData({
+    name: '',
+    email: '',
+    goal: '',
+    interest: '',
+  }); 
   };
    const reschedule = () => {
     setSecondOpen(false);
