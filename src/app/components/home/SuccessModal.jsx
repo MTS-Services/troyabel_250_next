@@ -55,11 +55,11 @@ const SuccessModal = ({
 
   return (
     <div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 '
+      className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 mt-2 sm:mt-12 sm:p-6'
       onWheel={(e) => e.stopPropagation()}
     >
       <div
-        className='relative bg-white w-[1180px] h-[850px] flex rounded-3xl overflow-hidden justify-between shadow-lg
+        className='relative bg-white w-[1180px] h-[850px] flex lg:rounded-3xl overflow-hidden justify-between shadow-lg
                     flex-col sm:flex-row sm:w-[1080px] sm:h-[700px]'
       >
         {/* Close Button */}
@@ -104,7 +104,7 @@ const SuccessModal = ({
 
         {/* Right Section */}
         <div
-          className='w-full sm:w-[650px] p-6 ml-4 overflow-y-auto
+          className='w-full sm:w-[650px] p-6 ml-0 lg:ml-12 overflow-y-auto
                       h-[67%] sm:h-auto'
         >
           <div className='space-y-4'>
@@ -145,7 +145,7 @@ const SuccessModal = ({
                 Location
               </label>
               <div className='w-full text-[#6D6D6D] sm:w-[520px] h-[45px] border border-gray-300 rounded-xl px-3 py-4 pointer-events-none '>
-                <a href='' className='pb-2'>Google Meet </a>
+                <a href='' className='pb-4 mb-2'>Google Meet </a>
               </div>
             </div>
           </div>
