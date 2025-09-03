@@ -86,7 +86,7 @@ export default function LenisPage() {
             >
               <motion.h2
                 style={{ scale: firstHeading_Scale }}
-                className='bg-gradient-to-r from-white to-slate-400 bg-clip-text text-center text-5xl font-medium text-transparent lg:text-6xl'
+                className='bg-gradient-to-r from-white leading-tight to-slate-400 bg-clip-text text-center text-5xl font-medium text-transparent lg:text-6xl'
               >
                 Master Every Stage of Your
                 <span className='text-[#A63EE7]'> UX Career.</span>
@@ -109,7 +109,7 @@ export default function LenisPage() {
               }}
               className='absolute flex flex-col items-center justify-center gap-6'
             >
-              <h2 className='bg-gradient-to-r from-white to-slate-400 bg-clip-text text-center text-4xl font-medium text-transparent lg:text-5xl'>
+              <h2 className='bg-gradient-to-r from-white leading-tight to-slate-400 bg-clip-text text-center text-4xl font-medium text-transparent lg:text-5xl'>
                 “User Experience Bootcamps :
                 <span className='text-[#A63EE7]'> A Dead-End</span>”
               </h2>

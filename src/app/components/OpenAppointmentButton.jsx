@@ -3,41 +3,59 @@ import { useState } from 'react';
 import FirstModal from './home/FirstModal';
 import InfoModal from './home/InfoModal';
 import SuccessModal from './home/SuccessModal';
-import { BsDot } from 'react-icons/bs';
 import { FiArrowRight } from 'react-icons/fi';
 const OpenAppointmentButton = () => {
   const [firstOpen, setFirstOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
   const [thirdOpen, setThirdOpen] = useState(false);
-
-  const closeAll = () => {
-    setFirstOpen(false);
-    setSecondOpen(false);
-    setThirdOpen(false);
-  };
-  //  Lifted state for form data
+   
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     goal: '',
     interest: '',
   });
+  const [time,setTime] = useState({
+    date:'',
+    time:'',
+    day:''
+  }); // To store selected date and time
+
+  const closeAll = () => {
+    setFirstOpen(false);
+    setSecondOpen(false);
+    setThirdOpen(false);
+     setFormData({
+    name: '',
+    email: '',
+    goal: '',
+    interest: '',
+  }); 
+  };
+   const reschedule = () => {
+    setSecondOpen(false);
+    setThirdOpen(false);
+    setFirstOpen(true);
+    console.log('Reschedule clicked');
+  };
+ 
+  
 
   return (
     <>
       <button
         onClick={() => setFirstOpen(true)}
-        className='relative flex items-center justify-center gap-2 px-6 py-2 rounded-full
+        className='relative flex items-center justify-center gap-2 px-6 py-2 rounded-lg
                        border border-[#A63EE7] bg-[#A63EE7] text-white font-medium overflow-hidden
                        transition-all duration-500 ease-out group'
       >
         <span
-          className='absolute inset-0 bg-black rounded-full scale-x-0 origin-left
+          className='absolute inset-0 bg-black rounded-lg scale-x-0 origin-left
                          transition-all duration-700 ease-in-out group-hover:scale-x-100
                          transform-gpu'
         ></span>
         <span
-          className='absolute inset-0 bg-gradient-to-r from-black/80 to-black rounded-full
+          className='absolute inset-0 bg-gradient-to-r from-black/80 to-black rounded-lg
                          scale-x-0 origin-left transition-all duration-800 ease-out
                          group-hover:scale-x-100 transform-gpu'
         ></span>
@@ -47,10 +65,9 @@ const OpenAppointmentButton = () => {
             className='flex items-center justify-center transition-all duration-500 ease-out
                            transform group-hover:-translate-x-4 group-hover:opacity-0'
           >
-            <BsDot size={20} />
           </span>
           <span className='transition-all duration-500 ease-out group-hover:text-white'>
-            Book a Free Discovery Call
+            Book a Free Call
           </span>
           <span
             className='flex items-center justify-center transition-all duration-500 ease-out
@@ -64,6 +81,9 @@ const OpenAppointmentButton = () => {
 
       <div className='z-50 fixed mt-4'>
         <FirstModal
+        time={time}
+        setTime={setTime}
+         
           isOpen={firstOpen}
           onClose={() => setFirstOpen(false)}
           onOpenSecond={() => setSecondOpen(true)}
@@ -78,11 +98,13 @@ const OpenAppointmentButton = () => {
         <SuccessModal
           isOpen={thirdOpen}
           onCloseAll={closeAll}
+          time ={time}
           onClose={() => setFirstOpen(false)}
           onOpenSecond={() => setSecondOpen(true)}
           onClose2={() => setSecondOpen(false)}
           onClose3={() => setThirdOpen(false)}
           formData={formData}
+          onReshedule={reschedule}
         />
       </div>
     </>

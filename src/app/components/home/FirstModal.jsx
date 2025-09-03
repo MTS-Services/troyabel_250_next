@@ -6,7 +6,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import { FaArrowLeft } from 'react-icons/fa';
 
-const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
+const FirstModal = ({ isOpen, onClose, onOpenSecond, time, setTime }) => {
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
@@ -88,63 +88,86 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
 
   if (!isOpen) return null;
 
-  const handleTimeClick = (time) => {
-    setSelectedTime(time);
-    console.log(
-      'Selected Date:',
-      `${currentYear}-${currentMonth + 1}-${selectedDate}`
-    );
-    console.log('Selected Time:', time);
+  const handleTimeClick = (timeValue) => {
+
+
+    setSelectedTime(timeValue);
+
+    // Format the date as "Month Day, Year"
+    const selected = new Date(currentYear, currentMonth, selectedDate);
+    const formattedDate = selected.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+
+    // Update parent state
+    setTime({
+      date: formattedDate, // e.g. "September 11, 2025"
+      time: timeValue,
+      day: selected.toLocaleString('en-US', { weekday: 'long' }),
+    });
+
     if (onOpenSecond) onOpenSecond();
+  };
+
+
+  const getSelectedDay = () => {
+    if (!selectedDate) return today.toLocaleString('en-US', { weekday: 'long' });
+    const selected = new Date(currentYear, currentMonth, selectedDate);
+    return selected.toLocaleString('en-US', { weekday: 'long' });
   };
 
   return (
     <div
-      className='fixed mt-14 inset-0 z-50 flex justify-center items-start pt-10 sm:pt-16 bg-black/60'
+      className='fixed mt-20 inset-0 z-50 flex justify-center items-start pt-10 sm:pt-16 bg-black'
       onWheel={(e) => e.stopPropagation()}
     >
       <div
-        className='bg-gray-950 border-2 border-white/15 text-white rounded-2xl 
+        className='bg-gray-950 border-2 border-white/15 text-white rounded-4xl 
                p-4 sm:p-6 shadow-xl w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl
                max-h-[90vh] overflow-y-auto relative'
       >
         {/* Close button */}
         <button
-          onClick={onClose}
-          className='absolute top-4 right-4 text-gray-300 hover:text-white text-xl sm:text-2xl font-bold'
-        >
-          ✕
-        </button>
+          onClick={onClose} className='absolute top-4 right-4 text-gray-300 hover:text-white text-xl sm:text-2xl font-bold'> ✕ </button>
+
 
         {/* Header */}
-        <div className='flex flex-col sm:flex-row items-center justify-between gap-4'>
-          <div className='flex items-center gap-4'>
+        <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+          {/* Doctor Info */}
+
+          <div className="flex items-center gap-4">
             <Image
-              src='/image/testimonial/Troy2025headshot.JPG'
-              alt='Doctor'
-              width={80}
-              height={80}
-              className='w-20 h-20 sm:w-24 sm:h-24 rounded-full mb-2 sm:mb-0'
+              src="/image/testimonial/Troy2025headshot.JPG"
+              alt="Doctor"
+              width={60}
+              height={60}
+              className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg mb-2 sm:mb-0"
             />
-            <div className='text-center sm:text-left'>
-              <h2 className='text-lg sm:text-xl font-bold text-[#ACADBC]'>
+            <div className="text-left">   {/* <-- Changed here */}
+              <h2 className="text-lg sm:text-xl font-bold text-[#ACADBC]">
                 Dr. Troy Abel
               </h2>
-              <p className='text-[#6D6D6D] text-sm sm:text-base'>
+              <p className="text-[#6D6D6D] text-sm sm:text-base">
                 Founder and Lead UX Coach
               </p>
             </div>
           </div>
-          <div className='w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center text-3xl sm:text-5xl font-bold mt-4 sm:mt-0 lg:mr-16 md:mr-14 sm:mr-12 mr-10'>
+
+
+          {/* Logo */}
+          <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center text-3xl sm:text-5xl font-bold">
             <Image
-              src='/image/logo/logophone.png'
-              alt='Logo'
+              src="/image/logo/logophone.png"
+              alt="Logo"
               width={80}
               height={80}
-              className='w-20 h-20 sm:w-24 sm:h-24 rounded-full'
+              className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mr-0 lg:mr-30"
             />
           </div>
         </div>
+
 
         {/* Meeting Type */}
         <div className='mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0 px-2 sm:px-6'>
@@ -153,9 +176,10 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
               Consultation (45-minutes)
             </h2>
           </section>
-          <div className='text-[#ACADBC] text-base sm:text-lg mt-2 sm:mt-0 lg:mr-16 md:mr-14 sm:mr-12 mr-10'>
-            ⏱ 45 mins
-          </div>
+          <div className='hidden lg:block text-[#ACADBC] text-base sm:text-lg mt-2 sm:mt-0 lg:mr-16 md:mr-14 sm:mr-12 mr-10'>
+  ⏱ 45 mins
+</div>
+
         </div>
 
         {/* Calendar and Time Slots */}
@@ -201,11 +225,10 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
                     <button
                       key={day}
                       onClick={() => setSelectedDate(day)}
-                      className={`h-10 w-10 sm:h-12 sm:w-12 rounded-lg text-xs sm:text-sm transition ${
-                        highlight
+                      className={`h-10 w-10 sm:h-12 sm:w-12 rounded-lg text-xs sm:text-sm transition ${highlight
                           ? 'bg-purple-600 text-white'
                           : 'bg-white/30 hover:bg-[#6D6D6D]'
-                      }`}
+                        }`}
                     >
                       {day}
                     </button>
@@ -216,10 +239,10 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
           </div>
 
           {/* Time Slots */}
-          <div className='flex flex-col items-center md:items-start'>
-            <h4 className='text-base sm:text-lg font-semibold mb-4'>Monday</h4>
+          <div className='flex flex-col items-center md:items-start '>
+            <h4 className='text-base sm:text-lg font-semibold mb-4'>{getSelectedDay()}</h4>
             <div
-              className='flex flex-col w-full max-h-72 overflow-y-auto gap-2 sm:grid sm:grid-cols-2 md:flex md:flex-col'
+              className='flex flex-col w-full max-h-72 overflow-y-auto gap-2 sm:grid sm:grid-cols-2 md:flex md:flex-col  scrollbar-purple'
               onWheel={(e) => e.stopPropagation()}
             >
               {times.map((time) => (

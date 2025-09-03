@@ -1,70 +1,72 @@
-// SuccessModal.jsx
+
 'use client';
 import React, { useState } from 'react';
 import { IoCheckmarkCircleSharp } from 'react-icons/io5';
 import { RxCrossCircled } from 'react-icons/rx';
 import { IoMdClose } from 'react-icons/io'; // Close icon
 import FirstModal from './FirstModal';
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 
 const SuccessModal = ({
   isOpen,
   onCloseAll,
   formData,
-  onClose,
+
   onOpenSecond,
-  onClose2,
-  onClose3,
+
+  onReshedule,
+  time
 }) => {
   const [cancel, setCancel] = useState(false);
   const [cancelModal, setCancelModal] = useState(false);
   const [footer, setFooter] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showCloseIcon, setShowCloseIcon] = useState(false);
-  console.log(formData);
-const handleCancel = () => {
-  setCancel(true);
-  setFooter(false);
-};
+  console.log(time);
+  const handleCancel = () => {
+    setCancel(true);
+    setFooter(false);
+  };
 
-const handleCancelModal = () => {
-  setCancelModal(true);
-  setCancel(false);
-  setShowCloseIcon(true);
-};
+  const handleCancelModal = () => {
+    setCancelModal(true);
+    setCancel(false);
+    setShowCloseIcon(true);
+  };
 
-const handleNevermind = () => {
-  setCancel(false);
-  setCancelModal(false);
-  setFooter(true);
-  
+  const handleNevermind = () => {
+    setCancel(false);
+    setCancelModal(false);
+    setFooter(true);
 
-};
-const handleCloseAll = () => {
-  setCancel(false);
-  setCancelModal(false);
-  setFooter(true);
-  setShowCloseIcon(false);
 
-  if (onCloseAll) onCloseAll();
-};
+  };
+  const handleCloseAll = () => {
+    setCancel(false);
+    setCancelModal(false);
+    setFooter(true);
+    setShowCloseIcon(false);
+
+    if (onCloseAll) onCloseAll();
+  };
   if (!isOpen) return null;
 
-  
+
 
   return (
     <div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 '
+      className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 mt-36 lg:mt-2 md:mt-2 sm:mt-12'
       onWheel={(e) => e.stopPropagation()}
     >
       <div
-        className='relative bg-white w-[1180px] h-[850px] flex rounded-3xl overflow-hidden justify-between shadow-lg
+        className='relative bg-white w-[1180px] h-[850px] flex lg:rounded-3xl overflow-hidden justify-between shadow-lg
                     flex-col sm:flex-row sm:w-[1080px] sm:h-[700px]'
       >
         {/* Close Button */}
         {showCloseIcon && (
           <button
             onClick={handleCloseAll}
-            className='absolute cursor-pointer top-4 right-4 text-gray-500 hover:text-black transition'
+            className='absolute cursor-pointer top-4 right-4 text-black hover:text-black transition'
           >
             <IoMdClose className='text-3xl' />
           </button>
@@ -93,11 +95,16 @@ const handleCloseAll = () => {
               </p>
             </>
           )}
+          {showCloseIcon?"":<div>
+            <button  className='px-6 py-2 border border-white rounded-lg text-white cursor-pointer mt-6 flex gap-2'   onClick={handleCloseAll}>
+             <FaRegArrowAltCircleLeft className='pt-1 text-xl'/> Back to Home 
+            </button>
+          </div>}
         </div>
 
         {/* Right Section */}
         <div
-          className='w-full sm:w-[650px] p-6 ml-4 overflow-y-auto
+          className='w-full sm:w-[650px] p-6 ml-0 lg:ml-12 overflow-y-auto
                       h-[67%] sm:h-auto'
         >
           <div className='space-y-4'>
@@ -105,7 +112,7 @@ const handleCloseAll = () => {
               <label className='block text-[#6D6D6D] font-semibold mb-4 mt-6 text-[18px]'>
                 Event Name
               </label>
-              <div className='w-full sm:w-[520px] h-[45px] border border-gray-300 rounded-xl text-[#6D6D6D] px-3 py-4 pointer-events-none'>
+              <div className='w-full sm:w-[520px] lg:h-[45px]  h-[70px] border border-gray-300 rounded-xl text-[#6D6D6D] px-3 py-4 pointer-events-none'>
                 Consultation (45-minutes) between Dr. Troy Abel and{' '}
                 {formData.name}
               </div>
@@ -114,7 +121,10 @@ const handleCloseAll = () => {
               <label className='block text-[#6D6D6D] font-semibold mb-4 mt-6 text-[18px]'>
                 Event Date/Time
               </label>
-              <div className='w-full sm:w-[520px] h-[45px] border border-gray-300 rounded-xl px-3 py-4 pointer-events-none'></div>
+              <div className='w-full sm:w-[520px] h-[75px] border text-[#6D6D6D] border-gray-300 rounded-xl px-3 py-4 pointer-events-none'>
+                <h1>{time.day},{time.date}</h1>
+                <p>{time.time}</p>
+              </div>
             </div>
             <div>
               <label className='block text-[#6D6D6D] font-semibold mb-4 mt-6 text-[18px]'>
@@ -135,7 +145,7 @@ const handleCloseAll = () => {
                 Location
               </label>
               <div className='w-full text-[#6D6D6D] sm:w-[520px] h-[45px] border border-gray-300 rounded-xl px-3 py-4 pointer-events-none '>
-                <a href='' className='pb-2'>Google Meet </a>
+                <a href='' className='pb-4 mb-2'>Google Meet </a>
               </div>
             </div>
           </div>
@@ -173,7 +183,7 @@ const handleCloseAll = () => {
                 <div className='flex gap-4 mt-6 pr-8 lg:pr-14 lg:justify-end justify-center'>
                   <button
                     onClick={handleNevermind}
-                    className='border-2 cursor-pointer text-center text-black w-[100px] h-[42px] text-[18px] rounded-xl border-black hover:bg-gray-200'
+                    className='border-2 cursor-pointer text-center text-black  w-[100px] h-[42px] text-[18px] rounded-xl border-[#ACADBC]  hover:bg-gray-200'
                   >
                     Nevermind
                   </button>
@@ -194,11 +204,9 @@ const handleCloseAll = () => {
                 Need to make a change?{' '}
                 <span
                   onClick={() => {
-                    setIsModalOpen(true);
-                    onClose2;
-                    onClose3;
-
-                    onClose(); // Close SuccessModal when FirstModal opens
+                           // close third modal if exists
+                    onReshedule?.();       // call reschedule function if exists
+                               // close SuccessModal
                   }}
                   className='underline cursor-pointer text-[#A63EE7]'
                 >
