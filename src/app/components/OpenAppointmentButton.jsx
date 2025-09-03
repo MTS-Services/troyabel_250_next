@@ -103,8 +103,8 @@ const OpenAppointmentButton = () => {
           time ={time}
           onClose={() => setFirstOpen(false)}
           onOpenSecond={() => setSecondOpen(true)}
-          onClose2={()=>setSecondOpen(false)}
-          onClose3={()=>setThirdOpen(false)}
+          onClose2={() => setSecondOpen(false)}
+          onClose3={() => setThirdOpen(false)}
           formData={formData}
           onReshedule={reschedule}
         />

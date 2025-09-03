@@ -8,8 +8,9 @@ import {
   AnimatePresence,
 } from 'framer-motion';
 import { IconMenu2, IconX } from '@tabler/icons-react';
-import { Button } from '../Button';
 import { cn } from '@/app/lib/utils';
+import { HiArrowUpRight } from 'react-icons/hi2';
+import FirstModal from './FirstModal';
 
 const navData = [
   { id: 'hero', title: 'Hero', href: '#hero' },
@@ -19,18 +20,30 @@ const navData = [
   { id: 'pricing', title: 'Pricing', href: '#pricing' },
 ];
 
+// --- ANIMATION VARIANTS ---
+const menuVariants = {
+  hidden: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.2 },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.2 },
+  },
+};
+
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const [active, setActive] = useState('hero');
   const [prevActive, setPrevActive] = useState('hero');
-
   const [touched, setTouched] = useState(null);
   const blurTimeoutRef = useRef(null);
-
   const isClickScrolling = useRef(false);
   const [heroHeight, setHeroHeight] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const heroSection = document.getElementById('hero');
@@ -95,7 +108,6 @@ export const Navbar = () => {
     isClickScrolling.current = true;
     setPrevActive(active);
     setActive(navId);
-
     setTouched(navId);
     if (blurTimeoutRef.current) {
       clearTimeout(blurTimeoutRef.current);
@@ -106,143 +118,173 @@ export const Navbar = () => {
   };
 
   return (
-    <div
-      className={cn(
-        'fixed inset-x-0 top-4 z-50 mx-auto transition-all duration-500',
-        isScrolled ? 'max-w-fit px-4' : 'max-w-[1200px] px-8'
-      )}
-    >
-      {/* --- Desktop Navbar --- */}
+    <>
       <div
         className={cn(
-          'relative z-[60] mx-auto hidden flex-row items-center justify-between self-start rounded-full bg-black/50 py-2 transition-all duration-300 lg:flex',
-          isScrolled ? 'px-4' : 'px-8',
-          isScrolled && 'border border-white/15 backdrop-blur-sm'
+          'fixed inset-x-0 top-4 z-50 mx-auto transition-all duration-500',
+          isScrolled ? 'max-w-fit px-4' : 'max-w-7xl px-8'
         )}
       >
-        {/* --- THIS IS THE UPDATED DESKTOP LOGO SECTION --- */}
-        <div className='w-auto pr-4'>
-          <div className='transition-transform duration-500 hover:animate-spin'>
-            {isScrolled ? (
-              <img
-                src='/image/logo/logophone.png'
-                alt='logo'
-                className='h-10 w-full'
-              />
-            ) : (
-              <img
-                src='/image/logo/logodesktop.png'
-                alt='logo'
-                className='h-8 w-auto'
-              />
-            )}
-          </div>
-        </div>
-
-        {/* --- Fluid Animation Section --- */}
-        <div className='relative flex flex-row p-1'>
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={active}
-              className='absolute inset-y-0 my-auto h-9 rounded-full bg-blue-600'
-              initial={{ x: `${getNavIndex(prevActive) * 100}%` }}
-              animate={{ x: `${getNavIndex(active) * 100}%` }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              style={{ width: `${100 / navData.length}%` }}
-            />
-          </AnimatePresence>
-
-          {navData.map((nav) => (
-            <a
-              key={nav.id}
-              href={nav.href}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick(nav.id);
-                document
-                  .querySelector(nav.href)
-                  ?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className='relative z-10 flex h-9 w-[110px] items-center justify-center text-center text-sm font-bold text-white/80 transition-all duration-300'
-            >
-              <span
-                className={cn(
-                  'transition-all duration-300',
-                  active === nav.id && 'text-white',
-                  touched === nav.id && 'blur-sm'
-                )}
-              >
-                {nav.title}
-              </span>
-            </a>
-          ))}
-        </div>
-
-        <div className='pl-4'>
-          <Button text={'Book a call'} />
-        </div>
-      </div>
-
-      {/* --- Mobile Navbar --- */}
-      <div
-        className={cn(
-          'relative z-50 mx-auto flex w-full flex-col items-center justify-between rounded-2xl bg-black/90 p-2 lg:hidden',
-          isScrolled && 'border border-white/15 backdrop-blur-sm'
-        )}
-      >
-        <div className='flex w-full flex-row items-center justify-between px-4 gap-4'>
-          <div className='transition-transform duration-500 hover:animate-spin'>
-            {isScrolled ? (
-              <img
-                src='/image/logo/logophone.png'
-                alt='logo'
-                className='h-8 w-full'
-              />
-            ) : (
-              <img
-                src='/image/logo/logodesktop.png'
-                alt='logo'
-                className='h-8 w-auto'
-              />
-            )}
-          </div>
-          {/* --- END OF UPDATED SECTION --- */}
-
-          {mobileMenuOpen ? (
-            <IconX
-              className='text-white'
-              onClick={() => setMobileMenuOpen(false)}
-            />
-          ) : (
-            <IconMenu2
-              className='text-white'
-              onClick={() => setMobileMenuOpen(true)}
-            />
+        {/* --- Desktop Navbar --- */}
+        <div
+          className={cn(
+            'relative z-[60] mx-auto hidden flex-row items-center justify-between self-start bg-black/50 py-2 transition-all duration-300 lg:flex',
+            isScrolled ? 'px-4' : 'px-8',
+            isScrolled && 'border border-white/15 backdrop-blur-sm'
           )}
-        </div>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className='flex w-full flex-col items-start justify-start gap-4 px-2 py-4'
-          >
+        >
+          <div className='w-auto pr-4'>
+            <div className='transition-transform duration-500'>
+              {isScrolled ? (
+                <img
+                  src='/image/logo/logophone.png'
+                  alt='logo'
+                  className='h-10 w-full'
+                />
+              ) : (
+                <img
+                  src='/image/logo/logodesktop.png'
+                  alt='logo'
+                  className='h-8 w-auto'
+                />
+              )}
+            </div>
+          </div>
+
+          <div className='relative flex flex-row p-1'>
+            <AnimatePresence initial={false}>
+              <motion.div
+                key={active}
+                className='absolute inset-y-0 my-auto h-9 rounded-full bg-[#A63EE7]'
+                initial={{ x: `${getNavIndex(prevActive) * 100}%` }}
+                animate={{ x: `${getNavIndex(active) * 100}%` }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                style={{ width: `${100 / navData.length}%` }}
+              />
+            </AnimatePresence>
+
             {navData.map((nav) => (
               <a
                 key={nav.id}
                 href={nav.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  'w-full rounded-md px-3 py-2 text-base font-medium text-white/80 hover:bg-gray-900',
-                  active === nav.id && 'bg-blue-600 text-white'
-                )}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(nav.id);
+                  document
+                    .querySelector(nav.href)
+                    ?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className='relative z-10 flex h-9 w-[110px] items-center justify-center text-center text-sm font-bold text-white/80 transition-all duration-300'
               >
-                {nav.title}
+                <span
+                  className={cn(
+                    'transition-all duration-300',
+                    active === nav.id && 'text-white',
+                    touched === nav.id && 'blur-sm'
+                  )}
+                >
+                  {nav.title}
+                </span>
               </a>
             ))}
-            <Button text={'Get Started'} className='w-full mt-2' />
-          </motion.div>
-        )}
+          </div>
+
+          <div className='pl-2'>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className={cn(
+                'flex items-center justify-center gap-2 rounded-lg bg-[#A63EE7] text-sm font-medium text-white transition-all duration-300',
+                isScrolled ? 'h-10 w-10' : 'px-3 py-2 lg:px-6 lg:py-[10px]'
+              )}
+            >
+              {!isScrolled && 'Book a call'}
+              <span>
+                <HiArrowUpRight />
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* --- Mobile Navbar --- */}
+        <div
+          className={cn(
+            'relative z-50 mx-auto flex w-full flex-col items-center justify-between rounded-2xl bg-black/90 p-2 lg:hidden',
+            isScrolled && 'border border-white/15 backdrop-blur-sm'
+          )}
+        >
+          <div className='flex w-full flex-row items-center justify-between gap-4 px-4'>
+            <div className='w-auto pr-4'>
+              <div className='transition-transform duration-500'>
+                {isScrolled ? (
+                  <img
+                    src='/image/logo/logophone.png'
+                    alt='logo'
+                    className='h-10 w-full'
+                  />
+                ) : (
+                  <img
+                    src='/image/logo/logodesktop.png'
+                    alt='logo'
+                    className='h-8 w-auto'
+                  />
+                )}
+              </div>
+            </div>
+
+            {mobileMenuOpen ? (
+              <IconX
+                className='text-white'
+                onClick={() => setMobileMenuOpen(false)}
+              />
+            ) : (
+              <IconMenu2
+                className='text-white'
+                onClick={() => setMobileMenuOpen(true)}
+              />
+            )}
+          </div>
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                variants={menuVariants}
+                initial='hidden'
+                animate='visible'
+                exit='hidden'
+                className='flex w-full flex-col items-start justify-start gap-4 px-2 py-4'
+              >
+                {navData.map((nav) => (
+                  <a
+                    key={nav.id}
+                    href={nav.href}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      handleNavClick(nav.id);
+                      document
+                        .querySelector(nav.href)
+                        ?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className={cn(
+                      'w-full rounded-md px-3 py-2 text-base font-medium text-white/80 hover:bg-neutral-800',
+                      active === nav.id && 'bg-[#A63EE7] text-white h-10 w-auto'
+                    )}
+                  >
+                    {nav.title}
+                  </a>
+                ))}
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className='mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#A63EE7] px-3 py-3 text-base font-medium text-white'
+                >
+                  Book a Call
+                  <HiArrowUpRight />
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
-    </div>
+
+      <FirstModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 };

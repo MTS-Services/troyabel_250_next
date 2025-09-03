@@ -95,11 +95,11 @@ const SuccessModal = ({
               </p>
             </>
           )}
-          <div>
+          {showCloseIcon?"":<div>
             <button  className='px-6 py-2 border border-white rounded-lg text-white cursor-pointer mt-6 flex gap-2'   onClick={handleCloseAll}>
              <FaRegArrowAltCircleLeft className='pt-1 text-xl'/> Back to Home 
             </button>
-          </div>
+          </div>}
         </div>
 
         {/* Right Section */}
@@ -183,9 +183,9 @@ const SuccessModal = ({
                 <div className='flex gap-4 mt-6 pr-8 lg:pr-14 lg:justify-end justify-center'>
                   <button
                     onClick={handleNevermind}
-                    className='border-2 cursor-pointer text-center text-black w-[100px] h-[42px] text-[18px] rounded-xl border-black hover:bg-gray-200'
+                    className='border-2 cursor-pointer text-center text-black  w-[100px] h-[42px] text-[18px] rounded-xl border-[#ACADBC]  hover:bg-gray-200'
                   >
-                    Never mind
+                    Nevermind
                   </button>
                   <button
                     onClick={handleCancelModal}

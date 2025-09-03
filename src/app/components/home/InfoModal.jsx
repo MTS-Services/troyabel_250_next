@@ -22,14 +22,27 @@ const InfoModal = ({ isOpen, onClose, onOpenThird, formData, setFormData }) => {
     });
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name?.trim()) newErrors.name = 'This field is required';
-    if (!formData.email?.trim()) newErrors.email = 'This field is required';
-    if (!formData.goal?.trim()) newErrors.goal = 'This field is required';
-    if (!formData.interest?.trim()) newErrors.interest = 'This field is required';
-    return newErrors;
-  };
+const validateForm = () => {
+  const newErrors = {};
+  
+  if (!formData.name?.trim()) newErrors.name = 'This field is required';
+  
+  if (!formData.email?.trim()) {
+    newErrors.email = 'This field is required';
+  } else {
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
+  }
+
+  if (!formData.goal?.trim()) newErrors.goal = 'This field is required';
+  if (!formData.interest?.trim()) newErrors.interest = 'This field is required';
+
+  return newErrors;
+};
+
 
   const handleConfirm = () => {
     const newErrors = validateForm();
