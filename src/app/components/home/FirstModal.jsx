@@ -6,7 +6,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import { FaArrowLeft } from 'react-icons/fa';
 
-const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
+const FirstModal = ({ isOpen, onClose, onOpenSecond,time,setTime }) => {
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
@@ -88,15 +88,30 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
 
   if (!isOpen) return null;
 
-  const handleTimeClick = (time) => {
-    setSelectedTime(time);
-    console.log(
-      'Selected Date:',
-      `${currentYear}-${currentMonth + 1}-${selectedDate}`
-    );
-    console.log('Selected Time:', time);
-    if (onOpenSecond) onOpenSecond();
-  };
+const handleTimeClick = (timeValue) => {
+ 
+
+  setSelectedTime(timeValue);
+
+  // Format the date as "Month Day, Year"
+  const selected = new Date(currentYear, currentMonth, selectedDate);
+  const formattedDate = selected.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  // Update parent state
+  setTime({
+    date: formattedDate, // e.g. "September 11, 2025"
+    time: timeValue,
+    day: selected.toLocaleString('en-US', { weekday: 'long' }),
+  });
+
+  if (onOpenSecond) onOpenSecond();
+};
+
+
 
   return (
     <div
@@ -104,7 +119,7 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
       onWheel={(e) => e.stopPropagation()}
     >
       <div
-        className='bg-gray-950 border-2 border-white/15 text-white rounded-2xl 
+        className='bg-gray-950 border-2 border-white/15 text-white rounded-4xl 
                p-4 sm:p-6 shadow-xl w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl
                max-h-[90vh] overflow-y-auto relative'
       >
@@ -216,10 +231,10 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond }) => {
           </div>
 
           {/* Time Slots */}
-          <div className='flex flex-col items-center md:items-start'>
+          <div className='flex flex-col items-center md:items-start '>
             <h4 className='text-base sm:text-lg font-semibold mb-4'>Monday</h4>
             <div
-              className='flex flex-col w-full max-h-72 overflow-y-auto gap-2 sm:grid sm:grid-cols-2 md:flex md:flex-col'
+              className='flex flex-col w-full max-h-72 overflow-y-auto gap-2 sm:grid sm:grid-cols-2 md:flex md:flex-col  scrollbar-purple'
               onWheel={(e) => e.stopPropagation()}
             >
               {times.map((time) => (

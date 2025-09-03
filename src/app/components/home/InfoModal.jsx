@@ -6,21 +6,40 @@ import Image from 'next/image';
 
 const InfoModal = ({ isOpen, onClose, onOpenThird, formData, setFormData }) => {
   if (!isOpen) return null;
-  // Form state
+
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+
+    // Clear error when typing
+    setErrors({
+      ...errors,
+      [e.target.name]: '',
+    });
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name?.trim()) newErrors.name = 'This field is required';
+    if (!formData.email?.trim()) newErrors.email = 'This field is required';
+    if (!formData.goal?.trim()) newErrors.goal = 'This field is required';
+    if (!formData.interest?.trim()) newErrors.interest = 'This field is required';
+    return newErrors;
   };
 
   const handleConfirm = () => {
+    const newErrors = validateForm();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return; // stop here if errors
+    }
     console.log('Form Data:', formData);
     onOpenThird();
   };
-
-  if (!isOpen) return null;
 
   return (
     <div
@@ -72,7 +91,7 @@ const InfoModal = ({ isOpen, onClose, onOpenThird, formData, setFormData }) => {
             </div>
           </div>
 
-          {/* Right Section (Scrollable Middle) */}
+          {/* Right Section (Form) */}
           <div className='flex-1 flex flex-col overflow-hidden'>
             <div className='flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-6'>
               {/* Name */}
@@ -85,9 +104,14 @@ const InfoModal = ({ isOpen, onClose, onOpenThird, formData, setFormData }) => {
                   name='name'
                   value={formData.name}
                   onChange={handleChange}
-                  className='w-full h-[45px] sm:h-[50px] text-black border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:outline-none'
+                  className={`w-full h-[45px] sm:h-[50px] text-black border ${
+                    errors.name ? 'border-red-500' : 'border-gray-300'
+                  } rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:outline-none`}
                   required
                 />
+                {errors.name && (
+                  <p className='text-red-500 text-sm mt-1'>{errors.name}</p>
+                )}
               </div>
 
               {/* Email */}
@@ -100,9 +124,14 @@ const InfoModal = ({ isOpen, onClose, onOpenThird, formData, setFormData }) => {
                   name='email'
                   value={formData.email}
                   onChange={handleChange}
-                  className='w-full h-[45px] sm:h-[50px] text-black border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:outline-none'
+                  className={`w-full h-[45px] sm:h-[50px] text-black border ${
+                    errors.email ? 'border-red-500' : 'border-gray-300'
+                  } rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:outline-none`}
                   required
                 />
+                {errors.email && (
+                  <p className='text-red-500 text-sm mt-1'>{errors.email}</p>
+                )}
               </div>
 
               {/* Goal */}
@@ -116,23 +145,32 @@ const InfoModal = ({ isOpen, onClose, onOpenThird, formData, setFormData }) => {
                   value={formData.goal}
                   onChange={handleChange}
                   rows='3'
-                  className='w-full text-black border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:outline-none'
+                  className={`w-full text-black border ${
+                    errors.goal ? 'border-red-500' : 'border-gray-300'
+                  } rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:outline-none`}
                 ></textarea>
+                {errors.goal && (
+                  <p className='text-red-500 text-sm mt-1'>{errors.goal}</p>
+                )}
               </div>
 
               {/* Interest */}
               <div>
                 <label className='block text-[#6D6D6D] font-semibold text-[16px] sm:text-[18px] mb-2'>
-                  Which area of UX are you most interested in? (e.g., UX/UI
-                  Design, UX Research, UX Strategy, I'm still figuring it out!)
+                  Which area of UX are you most interested in?
                 </label>
                 <textarea
                   name='interest'
                   value={formData.interest}
                   onChange={handleChange}
                   rows='3'
-                  className='w-full text-black border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:outline-none'
+                  className={`w-full text-black border ${
+                    errors.interest ? 'border-red-500' : 'border-gray-300'
+                  } rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:outline-none`}
                 ></textarea>
+                {errors.interest && (
+                  <p className='text-red-500 text-sm mt-1'>{errors.interest}</p>
+                )}
               </div>
             </div>
 

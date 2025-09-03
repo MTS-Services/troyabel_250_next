@@ -9,19 +9,32 @@ const OpenAppointmentButton = () => {
   const [firstOpen, setFirstOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
   const [thirdOpen, setThirdOpen] = useState(false);
-
-  const closeAll = () => {
-    setFirstOpen(false);
-    setSecondOpen(false);
-    setThirdOpen(false);
-  };
-  //  Lifted state for form data
+   //  Lifted state for form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     goal: '',
     interest: '',
   });
+  const [time,setTime] = useState({
+    date:'',
+    time:'',
+    day:''
+  }); // To store selected date and time
+
+  const closeAll = () => {
+    setFirstOpen(false);
+    setSecondOpen(false);
+    setThirdOpen(false);
+  };
+   const reschedule = () => {
+    setSecondOpen(false);
+    setThirdOpen(false);
+    setFirstOpen(true);
+    console.log('Reschedule clicked');
+  };
+ 
+  
 
   return (
     <>
@@ -64,6 +77,9 @@ const OpenAppointmentButton = () => {
 
       <div className='z-50 fixed mt-4'>
         <FirstModal
+        time={time}
+        setTime={setTime}
+         
           isOpen={firstOpen}
           onClose={() => setFirstOpen(false)}
           onOpenSecond={() => setSecondOpen(true)}
@@ -78,11 +94,13 @@ const OpenAppointmentButton = () => {
         <SuccessModal
           isOpen={thirdOpen}
           onCloseAll={closeAll}
+          time ={time}
           onClose={() => setFirstOpen(false)}
           onOpenSecond={() => setSecondOpen(true)}
           onClose2={()=>setSecondOpen(false)}
           onClose3={()=>setThirdOpen(false)}
           formData={formData}
+          onReshedule={reschedule}
         />
       </div>
     </>

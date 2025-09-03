@@ -5,6 +5,7 @@ import { IoCheckmarkCircleSharp } from 'react-icons/io5';
 import { RxCrossCircled } from 'react-icons/rx';
 import { IoMdClose } from 'react-icons/io'; // Close icon
 import FirstModal from './FirstModal';
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 
 const SuccessModal = ({
   isOpen,
@@ -14,42 +15,44 @@ const SuccessModal = ({
   onOpenSecond,
   onClose2,
   onClose3,
+  onReshedule,
+  time
 }) => {
   const [cancel, setCancel] = useState(false);
   const [cancelModal, setCancelModal] = useState(false);
   const [footer, setFooter] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showCloseIcon, setShowCloseIcon] = useState(false);
-  console.log(formData);
-const handleCancel = () => {
-  setCancel(true);
-  setFooter(false);
-};
+  console.log(time);
+  const handleCancel = () => {
+    setCancel(true);
+    setFooter(false);
+  };
 
-const handleCancelModal = () => {
-  setCancelModal(true);
-  setCancel(false);
-  setShowCloseIcon(true);
-};
+  const handleCancelModal = () => {
+    setCancelModal(true);
+    setCancel(false);
+    setShowCloseIcon(true);
+  };
 
-const handleNevermind = () => {
-  setCancel(false);
-  setCancelModal(false);
-  setFooter(true);
-  
+  const handleNevermind = () => {
+    setCancel(false);
+    setCancelModal(false);
+    setFooter(true);
 
-};
-const handleCloseAll = () => {
-  setCancel(false);
-  setCancelModal(false);
-  setFooter(true);
-  setShowCloseIcon(false);
 
-  if (onCloseAll) onCloseAll();
-};
+  };
+  const handleCloseAll = () => {
+    setCancel(false);
+    setCancelModal(false);
+    setFooter(true);
+    setShowCloseIcon(false);
+
+    if (onCloseAll) onCloseAll();
+  };
   if (!isOpen) return null;
 
-  
+
 
   return (
     <div
@@ -93,6 +96,11 @@ const handleCloseAll = () => {
               </p>
             </>
           )}
+          <div>
+            <button  className='px-6 py-2 border border-white rounded-lg text-white cursor-pointer mt-6 flex gap-2'   onClick={handleCloseAll}>
+             <FaRegArrowAltCircleLeft className='pt-1 text-xl'/> Back to Home 
+            </button>
+          </div>
         </div>
 
         {/* Right Section */}
@@ -105,7 +113,7 @@ const handleCloseAll = () => {
               <label className='block text-[#6D6D6D] font-semibold mb-4 mt-6 text-[18px]'>
                 Event Name
               </label>
-              <div className='w-full sm:w-[520px] h-[45px] border border-gray-300 rounded-xl text-[#6D6D6D] px-3 py-4 pointer-events-none'>
+              <div className='w-full sm:w-[520px] lg:h-[45px]  h-[70px] border border-gray-300 rounded-xl text-[#6D6D6D] px-3 py-4 pointer-events-none'>
                 Consultation (45-minutes) between Dr. Troy Abel and{' '}
                 {formData.name}
               </div>
@@ -114,7 +122,10 @@ const handleCloseAll = () => {
               <label className='block text-[#6D6D6D] font-semibold mb-4 mt-6 text-[18px]'>
                 Event Date/Time
               </label>
-              <div className='w-full sm:w-[520px] h-[45px] border border-gray-300 rounded-xl px-3 py-4 pointer-events-none'></div>
+              <div className='w-full sm:w-[520px] h-[75px] border text-[#6D6D6D] border-gray-300 rounded-xl px-3 py-4 pointer-events-none'>
+                <h1>{time.day},{time.date}</h1>
+                <p>{time.time}</p>
+              </div>
             </div>
             <div>
               <label className='block text-[#6D6D6D] font-semibold mb-4 mt-6 text-[18px]'>
@@ -194,11 +205,11 @@ const handleCloseAll = () => {
                 Need to make a change?{' '}
                 <span
                   onClick={() => {
-                    setIsModalOpen(true);
-                    onClose2;
-                    onClose3;
-
-                    onClose(); // Close SuccessModal when FirstModal opens
+                    setIsModalOpen(true); // open FirstModal
+                    onClose2?.();          // close second modal if exists
+                    onClose3?.();          // close third modal if exists
+                    onReshedule?.();       // call reschedule function if exists
+                    onClose?.();           // close SuccessModal
                   }}
                   className='underline cursor-pointer text-[#A63EE7]'
                 >
