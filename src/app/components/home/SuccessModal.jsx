@@ -55,7 +55,7 @@ const SuccessModal = ({
 
   return (
     <div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 mt-2 sm:mt-12 sm:p-6'
+      className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 mt-36 lg:mt-2 md:mt-2 sm:mt-12'
       onWheel={(e) => e.stopPropagation()}
     >
       <div
@@ -66,7 +66,7 @@ const SuccessModal = ({
         {showCloseIcon && (
           <button
             onClick={handleCloseAll}
-            className='absolute cursor-pointer top-4 right-4 text-white hover:text-black transition'
+            className='absolute cursor-pointer top-4 right-4 text-black hover:text-black transition'
           >
             <IoMdClose className='text-3xl' />
           </button>
