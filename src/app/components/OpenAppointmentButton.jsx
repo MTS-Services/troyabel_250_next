@@ -3,7 +3,6 @@ import { useState } from 'react';
 import FirstModal from './home/FirstModal';
 import InfoModal from './home/InfoModal';
 import SuccessModal from './home/SuccessModal';
-import { BsDot } from 'react-icons/bs';
 import { FiArrowRight } from 'react-icons/fi';
 const OpenAppointmentButton = () => {
   const [firstOpen, setFirstOpen] = useState(false);
@@ -46,17 +45,17 @@ const OpenAppointmentButton = () => {
     <>
       <button
         onClick={() => setFirstOpen(true)}
-        className='relative flex items-center justify-center gap-2 px-6 py-2 rounded-full
+        className='relative flex items-center justify-center gap-2 px-6 py-2 rounded-lg
                        border border-[#A63EE7] bg-[#A63EE7] text-white font-medium overflow-hidden
                        transition-all duration-500 ease-out group'
       >
         <span
-          className='absolute inset-0 bg-black rounded-full scale-x-0 origin-left
+          className='absolute inset-0 bg-black rounded-lg scale-x-0 origin-left
                          transition-all duration-700 ease-in-out group-hover:scale-x-100
                          transform-gpu'
         ></span>
         <span
-          className='absolute inset-0 bg-gradient-to-r from-black/80 to-black rounded-full
+          className='absolute inset-0 bg-gradient-to-r from-black/80 to-black rounded-lg
                          scale-x-0 origin-left transition-all duration-800 ease-out
                          group-hover:scale-x-100 transform-gpu'
         ></span>
@@ -66,10 +65,9 @@ const OpenAppointmentButton = () => {
             className='flex items-center justify-center transition-all duration-500 ease-out
                            transform group-hover:-translate-x-4 group-hover:opacity-0'
           >
-            <BsDot size={20} />
           </span>
           <span className='transition-all duration-500 ease-out group-hover:text-white'>
-            Book a Free Discovery Call
+            Book a Free Call
           </span>
           <span
             className='flex items-center justify-center transition-all duration-500 ease-out
