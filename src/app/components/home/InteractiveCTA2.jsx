@@ -9,9 +9,8 @@ export const InteractiveCTA2 = () => {
   };
 
   return (
-    <div>
-      {/* Fixed Floating Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+    <div className="max-w-7xl mx-auto flex justify-center lg:mb-8 md:mb-6 sm:mb-4 mb-3">
+      <div className="bottom-6">
         <button
           onClick={scrollToHero}
           className="flex items-center justify-center w-16 h-16 rounded-full
