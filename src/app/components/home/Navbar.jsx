@@ -23,23 +23,35 @@ const navData = [
 
 // --- Animation Variants ---
 const menuVariants = {
-  hidden: { opacity: 0, y: -20, transition: { duration: 0.2 } },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+  hidden: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.4 },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4 },
+  },
 };
 
 const logoVariants = {
-  initial: { opacity: 0, y: -10, filter: 'blur(2px)' },
+  initial: {
+    opacity: 0,
+    y: -10,
+    filter: 'blur(4px)',
+  },
   animate: {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.8, ease: 'easeOut' },
   },
   exit: {
     opacity: 0,
     y: 10,
     filter: 'blur(4px)',
-    transition: { duration: 0.2, ease: 'easeIn' },
+    transition: { duration: 0.3, ease: 'easeIn' },
   },
 };
 
