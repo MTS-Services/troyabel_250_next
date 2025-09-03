@@ -91,18 +91,18 @@ const PricingCard = ({ plan }) => {
       className={cn(
         // The flex flex-col is key to controlling the internal layout
         'flex flex-col p-8 rounded-2xl bg-[#1C1C1E] border border-white/10 transition-transform duration-300 hover:-translate-y-2',
-        plan.isFeatured && 'ring-2 ring-purple-500'
+        plan.isFeatured && 'ring-2 ring-[#A63EE7]'
       )}
     >
       {/* Card Header */}
       <div className='flex items-center gap-3'>
-        <plan.icon className='w-6 h-6 text-purple-400' />
-        <h3 className='text-xl font-semibold text-white'>{plan.title}</h3>
+        <plan.icon className='w-6 h-6 text-[#A63EE7]' />
+        <h3 className='text-md font-semibold text-white'>{plan.title}</h3>
       </div>
 
       {/* Price */}
       <div className='mt-6'>
-        <span className='text-4xl font-bold text-white'>{plan.price}</span>
+        <span className='text-3xl font-bold text-white'>{plan.price}</span>
       </div>
 
       {/* --- FIX: Description has a fixed height now to align the button below it --- */}
@@ -152,7 +152,7 @@ const PricingCard = ({ plan }) => {
       {hasMoreFeatures && (
         <button
           onClick={toggleExpanded}
-          className='flex items-center justify-center gap-2 mt-8 text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors'
+          className='flex items-center justify-center gap-2 mt-8 cursor-pointer text-sm font-semibold text-[#A63EE7] hover:text-[#A63EE9] transition-colors'
         >
           {isExpanded ? 'See less' : 'See all details'}
           <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
