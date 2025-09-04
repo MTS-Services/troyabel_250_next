@@ -180,11 +180,9 @@
 //     </section>
 //   );
 // }
-
-
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const steps = [
   {
@@ -208,10 +206,26 @@ const steps = [
 export default function HowItWorks() {
   const [active, setActive] = useState(0);
 
+  // Ref for in-view detection
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" }); 
+  // 'once: true' makes animation trigger only once
+  // 'margin' lets animation trigger slightly before fully visible
+
   return (
-    <section className="w-full py-16 text-white">
-      <div className="max-w-5xl mx-auto px-6 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-10">How It Works</h2>
+    <section id="how-it-works" className="w-full py-16 text-white">
+      <div
+        ref={ref}
+        className="max-w-6xl mx-auto px-6 text-center"
+      >
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-3xl sm:text-4xl font-bold mb-10"
+        >
+          A Simple, Proven Path to Success
+        </motion.h2>
 
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
@@ -231,27 +245,32 @@ export default function HowItWorks() {
         </div>
 
         {/* Animated Content */}
-        <div className="relative">
-  <AnimatePresence mode="wait">
-    <motion.div
-      key={active}
-      initial={{ opacity: 0, y: 30, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -30, scale: 0.95 }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="max-w-2xl mx-auto p-6 sm:p-8 border border-[#6D6D6D]/60 rounded-2xl shadow-lg opacity-80 bg-gradient-to-t from-[#A63EE7]/10 via-black to-[#A63EE7]/20"
-    >
-      <h3 className="text-xl sm:text-2xl font-semibold mb-3">
-        {steps[active].title}
-      </h3>
-      <p className="text-gray-300 text-sm sm:text-base">
-        {steps[active].desc}
-      </p>
-    </motion.div>
-  </AnimatePresence>
-</div>
-
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="relative"
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -30, scale: 0.95 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="max-w-2xl mx-auto p-6 sm:p-8 border border-[#6D6D6D]/60 rounded-2xl shadow-lg opacity-80 bg-gradient-to-t from-[#A63EE7]/10 via-black to-[#A63EE7]/20"
+            >
+              <h3 className="text-xl sm:text-2xl font-semibold mb-3">
+                {steps[active].title}
+              </h3>
+              <p className="text-gray-300 text-sm sm:text-base">
+                {steps[active].desc}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );
 }
+
