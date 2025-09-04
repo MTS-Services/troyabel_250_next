@@ -10,9 +10,19 @@ import {
   Sparkles,
   Layers3,
   BrainCircuit,
+<<<<<<< HEAD
   ChevronDown,
 } from "lucide-react";
 import OpenAppointmentButton from "../OpenAppointmentButton";
+=======
+  ChevronDown
+} from 'lucide-react';
+import OpenAppointmentButton from '../OpenAppointmentButton';
+import { FiArrowRight } from 'react-icons/fi';
+import FirstModal from './FirstModal';
+import InfoModal from './InfoModal';
+import SuccessModal from './SuccessModal';
+>>>>>>> a4855e346ed5f8d25148af29a481bf65b073021c
 
 const pricingPlans = [
   // Your pricingPlans array remains exactly the same...
@@ -77,7 +87,7 @@ const pricingPlans = [
 const MAX_VISIBLE_FEATURES = 3;
 
 // --- UPDATED: PricingCard component with centered text ---
-const PricingCard = ({ plan }) => {
+const PricingCard = ({ plan ,setFirstOpen}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const hasMoreFeatures = plan.features.length > MAX_VISIBLE_FEATURES;
 
@@ -107,8 +117,50 @@ const PricingCard = ({ plan }) => {
       <p className="mt-4 h-52 text-base text-gray-400">{plan.description}</p>
 
       {/* --- MODIFIED: Added flex justify-center to center the button --- */}
+<<<<<<< HEAD
       <div className="my-8 flex justify-center">
         <OpenAppointmentButton className={"w-full"} />
+=======
+      <div className='my-8 flex justify-center'>
+        {/**Button start */}
+        
+        <button
+          onClick={() => setFirstOpen(true)}
+          className='relative flex items-center justify-center gap-2 px-6 py-2 rounded-lg
+                               border border-[#A63EE7] bg-[#A63EE7] text-white font-medium overflow-hidden
+                               transition-all duration-500 ease-out group'
+        >
+          <span
+            className='absolute inset-0 bg-black rounded-lg scale-x-0 origin-left
+                                 transition-all duration-700 ease-in-out group-hover:scale-x-100
+                                 transform-gpu'
+          ></span>
+          <span
+            className='absolute inset-0 bg-gradient-to-r from-black/80 to-black rounded-lg
+                                 scale-x-0 origin-left transition-all duration-800 ease-out
+                                 group-hover:scale-x-100 transform-gpu'
+          ></span>
+
+          <span className='relative flex items-center gap-2 z-10'>
+            <span
+              className='flex items-center justify-center transition-all duration-500 ease-out
+                                   transform group-hover:-translate-x-4 group-hover:opacity-0'
+            >
+            </span>
+            <span className='transition-all duration-500 ease-out group-hover:text-white'>
+              Book a Free Call
+            </span>
+            <span
+              className='flex items-center justify-center transition-all duration-500 ease-out
+                                   transform opacity-0 translate-x-4 group-hover:translate-x-0
+                                   group-hover:opacity-100 group-hover:text-white'
+            >
+              <FiArrowRight size={18} />
+            </span>
+          </span>
+        </button>
+        {/**Button End */}
+>>>>>>> a4855e346ed5f8d25148af29a481bf65b073021c
       </div>
 
       {/* Features List (Intentionally left-aligned for readability) */}
@@ -165,9 +217,51 @@ const PricingCard = ({ plan }) => {
 // Main Pricing Section Component (No changes needed here)
 const PricingSection = () => {
   const [isOpen, setIsOpen] = useState(false);
+   const [firstOpen, setFirstOpen] = useState(false);
+  const [secondOpen, setSecondOpen] = useState(false);
+  const [thirdOpen, setThirdOpen] = useState(false);
+   
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    goal: '',
+    interest: '',
+  });
+  const [time,setTime] = useState({
+    date:'',
+    time:'',
+    day:''
+  }); // To store selected date and time
+
+  const closeAll = () => {
+    setFirstOpen(false);
+    setSecondOpen(false);
+    setThirdOpen(false);
+     setFormData({
+    name: '',
+    email: '',
+    goal: '',
+    interest: '',
+  }); 
+  };
+   const reschedule = () => {
+    setSecondOpen(false);
+    setThirdOpen(false);
+    setFirstOpen(true);
+    console.log('Reschedule clicked');
+  };
+ 
+  
+
+
 
   return (
+<<<<<<< HEAD
     <section id="pricing" className="max-w-7xl mx-auto my-16 px-6">
+=======
+    <>
+    <section id='pricing' className='max-w-7xl mx-auto my-16 px-6'>
+>>>>>>> a4855e346ed5f8d25148af29a481bf65b073021c
       <SectionTitle
         paragraph="Choose the plan that's right for you. All plans are flexible and can be customized."
         title="Coaching Plans"
@@ -175,11 +269,41 @@ const PricingSection = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mt-16">
         {pricingPlans.map((plan, index) => (
-          <PricingCard key={index} plan={plan} />
+          <PricingCard key={index} plan={plan} setFirstOpen={setFirstOpen}/>
         ))}
       </div>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
     </section>
+    <div className='z-50 fixed mt-4'>
+        <FirstModal
+        time={time}
+        setTime={setTime}
+         
+          isOpen={firstOpen}
+          onClose={() => setFirstOpen(false)}
+          onOpenSecond={() => setSecondOpen(true)}
+        />
+        <InfoModal
+          isOpen={secondOpen}
+          onClose={() => setSecondOpen(false)}
+          onOpenThird={() => setThirdOpen(true)}
+          formData={formData}
+          setFormData={setFormData}
+        />
+        <SuccessModal
+          isOpen={thirdOpen}
+          onCloseAll={closeAll}
+          time ={time}
+          onClose={() => setFirstOpen(false)}
+          onOpenSecond={() => setSecondOpen(true)}
+          onClose2={() => setSecondOpen(false)}
+          onClose3={() => setThirdOpen(false)}
+          formData={formData}
+          onReshedule={reschedule}
+        />
+      </div>
+    </>
+    
   );
 };
 

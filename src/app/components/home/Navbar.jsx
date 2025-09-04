@@ -12,6 +12,10 @@ import { HiArrowUpRight } from 'react-icons/hi2';
 
 import { cn } from '@/app/lib/utils';
 import FirstModal from './FirstModal';
+import InfoModal from './InfoModal';
+import SuccessModal from './SuccessModal';
+
+
 
 const navData = [
   { id: 'hero', title: 'Hero', href: '#hero' },
@@ -109,6 +113,46 @@ export const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [heroHeight, setHeroHeight] = useState(0);
 
+
+{/** nave Button modal start */}
+
+
+  const [firstOpen, setFirstOpen] = useState(false);
+  const [secondOpen, setSecondOpen] = useState(false);
+  const [thirdOpen, setThirdOpen] = useState(false);
+   
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    goal: '',
+    interest: '',
+  });
+  const [time,setTime] = useState({
+    date:'',
+    time:'',
+    day:''
+  }); // To store selected date and time
+
+  const closeAll = () => {
+    setFirstOpen(false);
+    setSecondOpen(false);
+    setThirdOpen(false);
+     setFormData({
+    name: '',
+    email: '',
+    goal: '',
+    interest: '',
+  }); 
+  };
+   const reschedule = () => {
+    setSecondOpen(false);
+    setThirdOpen(false);
+    setFirstOpen(true);
+    console.log('Reschedule clicked');
+  };
+ 
+
+{/** nave Button modal end*/}
   const { active, prevActive, handleNavClick } = useScrollSpy(
     navData.map((item) => item.id),
     { rootMargin: '-40% 0px -60% 0px' }
@@ -233,7 +277,7 @@ export const Navbar = () => {
           {/* Desktop "Book a call" button */}
           <motion.div layout className='pl-2 pr-2'>
             <button
-              onClick={handleOpenModal}
+              onClick={() => setFirstOpen(true)}
               className='flex items-center justify-center gap-2 overflow-hidden rounded-lg bg-[#A63EE7] text-sm font-medium text-white'
             >
               <motion.div
@@ -279,6 +323,7 @@ export const Navbar = () => {
             {/* Mobile Menu Toggle Button */}
             <button
               type='button'
+              
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
               onClick={toggleMobileMenu}
@@ -315,7 +360,7 @@ export const Navbar = () => {
                   </a>
                 ))}
                 <button
-                  onClick={() => setIsModalOpen(true)}
+                 onClick={() => setFirstOpen(true)}
                   className='mt-4 flex w-full items-center justify-center gap-2 bg-[#A63EE7] rounded-lg px-3 py-3 text-base font-medium text-white'
                 >
                   Book a Call <HiArrowUpRight />
@@ -326,7 +371,34 @@ export const Navbar = () => {
         </div>
       </div>
 
-      <FirstModal isOpen={isModalOpen} onClose={handleCloseModal} />
+    <div className='z-50 fixed mt-4'>
+        <FirstModal
+        time={time}
+        setTime={setTime}
+         
+          isOpen={firstOpen}
+          onClose={() => setFirstOpen(false)}
+          onOpenSecond={() => setSecondOpen(true)}
+        />
+        <InfoModal
+          isOpen={secondOpen}
+          onClose={() => setSecondOpen(false)}
+          onOpenThird={() => setThirdOpen(true)}
+          formData={formData}
+          setFormData={setFormData}
+        />
+        <SuccessModal
+          isOpen={thirdOpen}
+          onCloseAll={closeAll}
+          time ={time}
+          onClose={() => setFirstOpen(false)}
+          onOpenSecond={() => setSecondOpen(true)}
+          onClose2={() => setSecondOpen(false)}
+          onClose3={() => setThirdOpen(false)}
+          formData={formData}
+          onReshedule={reschedule}
+        />
+      </div>
     </>
   );
 };

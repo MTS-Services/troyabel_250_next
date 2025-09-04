@@ -75,7 +75,7 @@ export const FAQ = () => {
                     : "max-h-0 opacity-0"
                 }`}
               >
-                <li className="text-white/70 blur-[0.5px] text-base leading-relaxed">
+                <li className="text-white/70  text-base leading-relaxed">
                   {faq.answer}
                 </li>
               </div>

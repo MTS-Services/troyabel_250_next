@@ -139,11 +139,11 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond, time, setTime }) => {
 
           <div className="flex items-center gap-4">
             <Image
-              src="/image/testimonial/Troy2025headshot.JPG"
+              src="/image/team/headshot.jpg"
               alt="Doctor"
-              width={60}
-              height={60}
-              className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg mb-2 sm:mb-0"
+              width={80}
+              height={80}
+              className="w-16 h-16 sm:w-24 sm:h-24 rounded-lg mb-2 sm:mb-0"
             />
             <div className="text-left">   {/* <-- Changed here */}
               <h2 className="text-lg sm:text-xl font-bold text-[#ACADBC]">
@@ -177,8 +177,8 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond, time, setTime }) => {
             </h2>
           </section>
           <div className='hidden lg:block text-[#ACADBC] text-base sm:text-lg mt-2 sm:mt-0 lg:mr-16 md:mr-14 sm:mr-12 mr-10'>
-  ⏱ 45 mins
-</div>
+            ⏱ 45 mins
+          </div>
 
         </div>
 
@@ -205,23 +205,35 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond, time, setTime }) => {
             </div>
 
             {/* Weekdays */}
-            <div className='grid grid-cols-7 gap-1 sm:gap-2 text-center text-xs sm:text-sm font-medium text-gray-400 mb-2'>
+            {/* Weekdays */}
+            <div className="grid grid-cols-7 gap-1 sm:gap-2 text-center text-xs sm:text-sm font-medium text-gray-400 mb-2">
               {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
                 <span key={day}>{day}</span>
               ))}
             </div>
 
             {/* Days */}
-            <div className='grid grid-cols-7 gap-1 sm:gap-2'>
-              {Array.from({ length: daysInMonth }, (_, i) => i + 1).map(
-                (day) => {
+            <div className="grid grid-cols-7 gap-1 sm:gap-2">
+              {(() => {
+                const firstDay = new Date(currentYear, currentMonth, 1).getDay(); // kon weekday e 1st pore
+                const daysArray = [];
+
+                // empty cells before 1st date
+                for (let i = 0; i < firstDay; i++) {
+                  daysArray.push(<div key={`empty-${i}`} />);
+                }
+
+                // actual days
+                for (let day = 1; day <= daysInMonth; day++) {
                   const isToday =
                     day === today.getDate() &&
                     currentMonth === today.getMonth() &&
                     currentYear === today.getFullYear();
+
                   const isSelected = selectedDate === day;
                   const highlight = isSelected || (!selectedDate && isToday);
-                  return (
+
+                  daysArray.push(
                     <button
                       key={day}
                       onClick={() => setSelectedDate(day)}
@@ -234,8 +246,11 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond, time, setTime }) => {
                     </button>
                   );
                 }
-              )}
+
+                return daysArray;
+              })()}
             </div>
+
           </div>
 
           {/* Time Slots */}
@@ -288,7 +303,10 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond, time, setTime }) => {
         </div>
       </div>
     </div>
+
   );
+
+
 };
 
 export default FirstModal;

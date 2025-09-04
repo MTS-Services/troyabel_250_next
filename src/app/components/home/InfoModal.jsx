@@ -56,10 +56,10 @@ const validateForm = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black sm:p-6 mt-12  "
+      className="fixed mt-20 inset-0 z-50 flex justify-center items-start pt-10 sm:pt-16 bg-black  "
       onWheel={(e) => e.stopPropagation()}
     >
-      <div className="relative bg-white w-full max-w-[1180px] max-h-[90vh] flex flex-col lg:rounded-2xl shadow-lg overflow-hidden">
+      <div className="relative bg-white w-full max-w-[1180px] h-[700px] flex flex-col lg:rounded-2xl shadow-lg overflow-hidden">
         {/* Header */}
         <div className="bg-[#A63EE7] text-white px-4 sm:px-6 h-[70px] sm:h-[80px] flex items-center justify-between flex-shrink-0 ">
           <h2 className="text-xl sm:text-3xl font-semibold">
@@ -74,7 +74,7 @@ const validateForm = () => {
             {/* Top Row: Image + Name */}
             <div className="flex items-center gap-4 mb-4 w-full">
               <Image
-                src="/image/testimonial/Troy2025headshot.JPG"
+                src="/image/team/headshot.jpg"
                 alt="Doctor"
                 width={50}
                 height={50}
@@ -218,7 +218,7 @@ const validateForm = () => {
                 <button
                   type="button"
                   onClick={handleConfirm}
-                  className="px-6 py-2 rounded-lg bg-[#A63EE7] text-white hover:bg-purple-800"
+                  className="px-6 py-2 rounded-lg border-[#A63EE7] bg-[#A63EE7] text-white hover:bg-purple-800"
                 >
                   Confirm
                 </button>
