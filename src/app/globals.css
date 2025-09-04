@@ -9,3 +9,23 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.scrollbar-purple::-webkit-scrollbar {
+  width: 8px; /* width of the scrollbar */
+}
+
+.scrollbar-purple::-webkit-scrollbar-track {
+  background: transparent; /* transparent background */
+}
+
+.scrollbar-purple::-webkit-scrollbar-thumb {
+  background-color: #A63EE7; /* purple color */
+  border-radius: 9999px; /* rounded scrollbar */
+  border: 2px solid transparent; /* optional spacing around thumb */
+}
+
+/* Firefox */
+.scrollbar-purple {
+  scrollbar-width: thin;
+  scrollbar-color: #A63EE7 transparent;
+}

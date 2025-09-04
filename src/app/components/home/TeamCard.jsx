@@ -1,12 +1,11 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { SectionTitle } from "../SectionTitle";
 
-// Team Members Data
 const teamMembers = [
   {
     name: "Dr. Troy Abel (Dr. T)",
@@ -15,9 +14,9 @@ const teamMembers = [
     front: `Dr. T has worn many hats throughout his career, from being the hiring manager who assesses talent to the professor sharing knowledge with eager minds. His diverse experiences have equipped him with a deep understanding of what it truly takes to excel in UX design, strategy, and research.`,
     back: `Dr. Abel is a seasoned design leader with over 15 years of experience spanning both academia and industry. As a former design professor at Iowa State University, Virginia Tech, and the University of North Texas, he brings a unique blend of academic rigor and real-world insight to his work. His time in higher education was dedicated to shaping the next generation of designers through research-driven teaching and mentorship. In industry, Dr. T leads high-performing teams that deliver innovative, user-centered solutions with clarity, precision, and purpose. Grounded in research, strategy, and a deep commitment to collaboration, he fosters a culture of growth, creativity, and excellence—consistently driving product innovation and strong business outcomes.`,
     badges: [
-      { text: "Portfolio Strategy", color: "bg-purple-800" },
-      { text: "UX Career Transition", color: "bg-blue-800" },
-      { text: "User Research", color: "bg-pink-800" },
+      { text: "Portfolio Strategy" },
+      { text: "UX Career Transition" },
+      { text: "User Research" },
     ],
     headshot: "/image/team/headshot.jpg",
   },
@@ -27,9 +26,9 @@ const teamMembers = [
     front: `Andrew Schall is a UX leader, researcher, and strategist with 20+ years of experience driving innovation at organizations including ServiceNow, Mayo Clinic, Citibank, Office Depot, and Southwest Airlines.`,
     back: `He is the author of The Persona and Journey Map Playbook and co-author of Eye Tracking in User Experience. Andrew is an experienced instructor teaching user experience courses as an adjunct faculty member at the Maryland Institute College of Art (MICA) Design.`,
     badges: [
-      { text: "UX Research Expert", color: "bg-purple-800" },
-      { text: "Author", color: "bg-blue-800" },
-      { text: "Education", color: "bg-pink-800" },
+      { text: "UX Research Expert" },
+      { text: "Author" },
+      { text: "Education" },
     ],
     headshot: "/image/team/Andrew.png",
   },
@@ -43,7 +42,6 @@ const teamMembers = [
   },
 ];
 
-// Custom Carousel Arrows
 const PrevArrow = ({ onClick }) => (
   <button
     className="slick-prev absolute left-2 top-1/2 -translate-y-1/2 z-50 text-white text-2xl"
@@ -63,14 +61,6 @@ const NextArrow = ({ onClick }) => (
 );
 
 export default function TeamSection() {
-  const [flipped, setFlipped] = useState(false);
-  const flipTimer = useRef(null);
-
-  useEffect(() => {
-    flipTimer.current = setTimeout(() => setFlipped((prev) => !prev), 3000);
-    return () => clearTimeout(flipTimer.current);
-  }, [flipped]);
-
   const settings = {
     dots: true,
     infinite: true,
@@ -78,8 +68,7 @@ export default function TeamSection() {
     slidesToShow: 2,
     slidesToScroll: 1,
     arrows: true,
-    autoplay: true,
-    autoplaySpeed: 4000,
+    autoplay: false, // disabled auto advance
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     responsive: [
@@ -101,11 +90,8 @@ export default function TeamSection() {
 
         <Slider {...settings}>
           {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="px-[10px] sm:px-3" // sm up → 12px, below 640px → 40px
-            >
-              <TeamCard member={member} flipped={flipped} />
+            <div key={index} className="px-[10px] sm:px-3">
+              <TeamCard member={member} />
             </div>
           ))}
         </Slider>
@@ -114,20 +100,27 @@ export default function TeamSection() {
   );
 }
 
-function TeamCard({ member, flipped }) {
+function TeamCard({ member }) {
+  const [flipped, setFlipped] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="md:w-[430px] sm:w-[400px] w-[360px] md:h-[510px] sm:-h-[450px] h-[640px] mx-auto mb-6"
+      className="md:w-[430px] sm:w-[400px] w-[360px] md:h-[510px] sm:h-[450px] h-[640px] mx-auto mb-6"
     >
-      <div className="w-full h-full relative" style={{ perspective: "1000px" }}>
+      <div
+        className="w-full h-full relative"
+        style={{ perspective: "1000px" }}
+        onMouseEnter={() => setFlipped(true)}
+        onMouseLeave={() => setFlipped(false)}
+      >
         <motion.div
           className="relative w-full h-full"
           style={{ transformStyle: "preserve-3d" }}
           animate={{ rotateY: flipped ? 180 : 0 }}
-          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
         >
           {/* Front */}
           <div
@@ -173,8 +166,8 @@ function TeamCard({ member, flipped }) {
                 <span
                   key={index}
                   className={`${
-                    badge?.color || "bg-gray-700"
-                  } px-3 py-1 mt-1 rounded-full text-xs font-normal text-white border border-white/20 shadow-sm`}
+                    badge?.color || "bg-[#A63EE7]"
+                  } px-3 py-1 mt-1 rounded-full text-xs font-normal text-white/90 border border-white/20 shadow-sm`}
                 >
                   {badge?.text || badge}
                 </span>
@@ -202,8 +195,8 @@ function TeamCard({ member, flipped }) {
                 <span
                   key={index}
                   className={`${
-                    badge?.color || "bg-gray-700"
-                  } px-3 py-1 mt-1 rounded-full text-xs font-medium text-white border border-white/20 shadow-sm`}
+                    badge?.color || "bg-[#A63EE7]"
+                  } px-3 py-1 mt-1 rounded-full text-xs font-medium text-white/90 border border-white/20 shadow-sm`}
                 >
                   {badge?.text || badge}
                 </span>

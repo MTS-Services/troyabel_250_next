@@ -5,7 +5,6 @@ import { RiBriefcase4Line } from "react-icons/ri";
 import { MdOutlineRecordVoiceOver } from "react-icons/md";
 import { motion } from "framer-motion";
 import { SectionTitle } from "../SectionTitle";
-import SolutionSectionTwo from "./SolutionSectionTwo";
 
 export default function SolutionSection() {
   const features = [

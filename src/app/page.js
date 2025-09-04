@@ -43,7 +43,7 @@ export default function Home() {
         <TeamSection />
         <PricingSection />
         <FAQ />
-        <InteractiveCTA2 />
+        {/* <InteractiveCTA2 /> */}
       </main>
     </div>
   );

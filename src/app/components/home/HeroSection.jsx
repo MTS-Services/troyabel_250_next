@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import Lenis from '@studio-freight/lenis';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import DarkVeil from './DarkVeil';
-import OpenAppointmentButton from '../OpenAppointmentButton';
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
+import { motion, useScroll, useTransform } from "framer-motion";
+import DarkVeil from "./DarkVeil";
+import OpenAppointmentButton from "../OpenAppointmentButton";
 
 export default function LenisPage() {
   // Setup Lenis smooth scroll
@@ -68,35 +68,41 @@ export default function LenisPage() {
   );
 
   return (
-    <div id='hero'>
-      <div className='relative'>
-        <div className='sticky inset-0 z-0 h-screen w-full'>
+    <div id="hero">
+      <div className="relative">
+        <div className="sticky inset-0 z-0 h-screen w-full">
           <DarkVeil />
         </div>
         {/* UPDATED: Reduced scroll container height for the two animations */}
-        <div className='relative h-[300vh] w-full -mt-[100vh]'>
-          <div className='sticky top-0 z-10 mx-auto flex h-screen w-full max-w-4xl flex-col items-center justify-center gap-6 px-4'>
+        <div className="relative h-[300vh] w-full -mt-[100vh]">
+          <div className="sticky top-0 z-10 mx-auto flex h-screen w-full max-w-4xl flex-col items-center justify-center gap-6 px-4">
             {/* --- Section 1 Content --- */}
             <motion.div
               style={{
                 scale: firstSection_Scale,
                 opacity: firstSection_Opacity,
               }}
-              className='absolute flex w-full max-w-4xl flex-col items-center justify-center gap-6'
+              className="absolute flex w-full max-w-4xl flex-col items-center justify-center gap-6"
             >
               <motion.h2
                 style={{ scale: firstHeading_Scale }}
-                className='bg-gradient-to-r from-white leading-tight to-slate-400 bg-clip-text text-center text-5xl font-medium text-transparent lg:text-6xl'
+                className="bg-gradient-to-r from-white leading-tight to-slate-400 bg-clip-text text-center text-4xl md:text-5xl lg:text-6xl font-medium text-transparent"
               >
                 Master Every Stage of Your
-                <span className='text-[#A63EE7]'> UX Career.</span>
+                <span className="text-[#A63EE7]"> UX Career.</span>
               </motion.h2>
-              <h6 className='text-center text-xl text-white/70'>
+              <h6 className="text-center text-xl text-white/60 md:max-w-[760px] sm:max-w-[740px]">
                 Industry leaders with experience at major corporations and a
                 history of teaching design and UX at top universities
                 nationwide.
               </h6>
-              <div className=''>
+              <h6 className="text-center text-xl text-white/60 md:max-w-[660px] sm:max-w-[700px]">
+                Forget one-size-fits-all bootcamps. Our team provides
+                individualized coaching to build a unique portfolio that gets
+                you hired and strategic mentoring to help you level up into a
+                senior role.
+              </h6>
+              <div className="">
                 <OpenAppointmentButton />
               </div>
             </motion.div>
@@ -107,18 +113,18 @@ export default function LenisPage() {
                 scale: secondSection_Scale,
                 opacity: secondSection_Opacity,
               }}
-              className='absolute flex flex-col items-center justify-center gap-6'
+              className="absolute flex flex-col items-center justify-center gap-6"
             >
-              <h2 className='bg-gradient-to-r from-white leading-tight to-slate-400 bg-clip-text text-center text-4xl font-medium text-transparent lg:text-5xl'>
+              <h2 className="bg-gradient-to-r from-white leading-tight to-slate-400 bg-clip-text text-center text-4xl md:text-5xl lg:text-6xl font-medium text-transparent">
                 “User Experience Bootcamps :
-                <span className='text-[#A63EE7]'> A Dead-End</span>”
+                <span className="text-[#A63EE7]"> A Dead-End</span>”
               </h2>
-              <h6 className='text-center text-base text-white/70 max-w-2xl'>
+              <h6 className="text-center text-base text-white/70 max-w-2xl">
                 “The collision of higher-ed bloat, Silicon Valley's appetite for
                 disruption, and corporate-scale training led to thousands of
                 largely unemployable UX designers” – Jon Kolko
               </h6>
-              <div className=''>
+              <div className="">
                 <OpenAppointmentButton />
               </div>
             </motion.div>
