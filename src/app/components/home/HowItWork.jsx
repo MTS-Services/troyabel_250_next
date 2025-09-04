@@ -216,7 +216,7 @@ export default function HowItWorks() {
     <section id="how-it-works" className="w-full py-16 text-white">
       <div
         ref={ref}
-        className="max-w-6xl mx-auto px-6 text-center"
+        className="max-w-5xl mx-auto px-6 text-center"
       >
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
