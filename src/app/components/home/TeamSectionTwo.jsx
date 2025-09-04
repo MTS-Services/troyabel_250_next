@@ -1,9 +1,9 @@
 "use client";
-import { useState } from "react";
+
+import React, { useState, useEffect } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import { Carousel } from "react-responsive-carousel";
 import { motion } from "framer-motion";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { SectionTitle } from "../SectionTitle";
 
 const teamMembers = [
@@ -42,59 +42,80 @@ const teamMembers = [
   },
 ];
 
-const PrevArrow = ({ onClick }) => (
-  <button
-    className="slick-prev absolute left-2 top-1/2 -translate-y-1/2 z-50 text-white text-2xl"
-    onClick={onClick}
-  >
-    &#10094;
-  </button>
-);
-
-const NextArrow = ({ onClick }) => (
-  <button
-    className="slick-next absolute right-2 top-1/2 -translate-y-1/2 z-50 text-white text-2xl"
-    onClick={onClick}
-  >
-    &#10095;
-  </button>
-);
-
 export default function TeamSection() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    arrows: true,
-    autoplay: false, // disabled auto advance
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 2 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
-      { breakpoint: 480, settings: { slidesToShow: 1 } },
-    ],
-  };
+  const [slides, setSlides] = useState([]);
+
+  useEffect(() => {
+    const updateSlides = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setSlides(teamMembers.map((member) => [member]));
+      } else {
+        const grouped = [];
+        for (let i = 0; i < teamMembers.length; i += 2) {
+          grouped.push(teamMembers.slice(i, i + 2));
+        }
+        setSlides(grouped);
+      }
+    };
+
+    updateSlides();
+    window.addEventListener("resize", updateSlides);
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
+
+  if (slides.length === 0) return null;
 
   return (
     <section
       id="team"
       className="w-full bg-gradient-to-r from-[#0a0a0a] via-[#1a0f24] to-[#0a0a0a] text-white lg:py-8 md:py-7 sm:py-6 py-5 px-4 sm:px-6 lg:px-8"
     >
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      <div className="max-w-6xl mx-auto text-center">
         <SectionTitle title={"Meet the Team"} />
 
-        <Slider {...settings}>
-          {teamMembers.map((member, index) => (
-            <div key={index} className="">
-              <TeamCard member={member} />
-            </div>
-          ))}
-        </Slider>
+        <Carousel
+  showArrows={true}
+  showThumbs={false}
+  infiniteLoop={true}
+  autoPlay={false}
+  showStatus={false}
+  swipeable={true}
+  renderIndicator={() => null}
+  renderArrowPrev={(onClickHandler, hasPrev, label) =>
+    hasPrev && (
+      <button
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-50 text-white text-2xl"
+        onClick={onClickHandler}
+        aria-label={label}
+      >
+        &#10094;
+      </button>
+    )
+  }
+  renderArrowNext={(onClickHandler, hasNext, label) =>
+    hasNext && (
+      <button
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-50 text-white text-2xl"
+        onClick={onClickHandler}
+        aria-label={label}
+      >
+        &#10095;
+      </button>
+    )
+  }
+>
+  {slides.map((group, index) => (
+    <div key={index} className="flex justify-center gap-8">
+      {group.map((member, i) => (
+        <div key={i}>
+          <TeamCard member={member} />
+        </div>
+      ))}
+    </div>
+  ))}
+</Carousel>
+
       </div>
     </section>
   );
@@ -108,8 +129,7 @@ function TeamCard({ member }) {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      // className="lg:w-[430px] md:w-[390px] w-[280px] lg:h-[510px] md:h-[570px] h-[670px] mx-auto mb-6"
-      className="lg:w-[430px] md:w-[390px] w-[290px] lg:h-[510px] md:h-[570px] h-[790px] mx-auto gap-20 mb-6"
+      className="lg:w-[430px] md:w-[340px] w-[290px] lg:h-[510px] md:h-[635px] h-[720px] mx-auto gap-96 mb-6"
     >
       <div
         className="w-full h-full relative"
@@ -125,10 +145,10 @@ function TeamCard({ member }) {
         >
           {/* Front */}
           <div
-            className="absolute w-full h-full top-0 left-0 bg-[#A63EE7]/5 border border-white/20 rounded-2xl flex flex-col md:p-5 sm:p-4 p-3"
+            className="absolute w-full h-full top-0 left-0 bg-[#A63EE7]/5 border border-white/20 rounded-2xl flex flex-col lg:p-5 md:p-4 p-3"
             style={{ backfaceVisibility: "hidden" }}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center md:gap-4 sm:gap-3 gap-2">
               <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden flex items-center justify-center">
                 <img
                   src={member.headshot}
@@ -137,10 +157,10 @@ function TeamCard({ member }) {
                 />
               </div>
               <div className="my-auto">
-                <h3 className="text-[20px] font-normal text-white/90">
+                <h3 className="lg:text-[20px] md:text-lg text-base font-normal text-white/90">
                   {member.name}
                 </h3>
-                <p className="text-[16px] font-normal text-[#ACADBC] mb-2">
+                <p className="md:text-[16px] text-sm font-normal text-[#ACADBC] mb-2">
                   {member.role}
                 </p>
               </div>
@@ -178,7 +198,7 @@ function TeamCard({ member }) {
 
           {/* Back */}
           <div
-            className="absolute w-full h-full top-0 left-0 bg-[#A63EE7]/10 border border-white/20 rounded-2xl flex flex-col p-5 overflow-auto"
+            className="absolute w-full h-full top-0 left-0 bg-[#A63EE7]/10 border border-white/20 rounded-2xl flex flex-col lg:p-5 md:p-4 p-3 overflow-auto"
             style={{
               backfaceVisibility: "hidden",
               transform: "rotateY(180deg)",

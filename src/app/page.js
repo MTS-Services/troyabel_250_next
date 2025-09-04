@@ -8,7 +8,7 @@ import { InteractiveCTA2 } from "./components/home/InteractiveCTA2";
 import HeroSection from "./components/home/HeroSection";
 import { useEffect } from 'react';
 import Lenis from 'lenis';
-import TeamSection from "./components/home/TeamCard";
+import TeamSection from "./components/home/TeamSectionTwo";
 
 export default function Home() {
   useEffect(() => {
