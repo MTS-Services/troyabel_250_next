@@ -5,7 +5,6 @@ import { RiBriefcase4Line } from "react-icons/ri";
 import { MdOutlineRecordVoiceOver } from "react-icons/md";
 import { motion } from "framer-motion";
 import { SectionTitle } from "../SectionTitle";
-import SolutionSectionTwo from "./SolutionSectionTwo";
 
 export default function SolutionSection() {
   const features = [
@@ -60,7 +59,7 @@ export default function SolutionSection() {
       className="scroll-mt-[80px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8 md:my-14 lg:my-18"
     >
       {/* Section Title */}
-      <div className="text-center md:text-left flex flex-col justify-center items-center md:items-start mb-10">
+      <div className="text-center flex justify-center items-center md:items-start">
         <SectionTitle
           heading={"Solution"}
           paragraph={
@@ -97,7 +96,7 @@ export default function SolutionSection() {
       </div>
 
       {/* Next Section */}
-      <SolutionSectionTwo />
+      {/* <SolutionSectionTwo /> */}
     </section>
   );
 }
