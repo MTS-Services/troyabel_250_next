@@ -91,12 +91,12 @@ export default function LenisPage() {
                 Master Every Stage of Your
                 <span className="text-[#A63EE7]"> UX Career.</span>
               </motion.h2>
-              <h6 className="text-center text-xl text-white/60 md:max-w-[760px] sm:max-w-[740px]">
+              <h6 className="text-center text-xl text-white/60 md:max-w-[760px] sm:max-w-[740px] max-w-[380px]">
                 Industry leaders with experience at major corporations and a
                 history of teaching design and UX at top universities
                 nationwide.
               </h6>
-              <h6 className="text-center text-xl text-white/60 md:max-w-[660px] sm:max-w-[700px]">
+              <h6 className="text-center text-xl text-white/60 md:max-w-[660px] sm:max-w-[700px] max-w-[380px]">
                 Forget one-size-fits-all bootcamps. Our team provides
                 individualized coaching to build a unique portfolio that gets
                 you hired and strategic mentoring to help you level up into a

@@ -83,14 +83,14 @@ export default function TeamSection() {
   return (
     <section
       id="team"
-      className="w-full bg-gradient-to-r from-[#0a0a0a] via-[#1a0f24] to-[#0a0a0a] text-white lg:py-8 md:py-7 sm:py-6 py-5"
+      className="w-full bg-gradient-to-r from-[#0a0a0a] via-[#1a0f24] to-[#0a0a0a] text-white lg:py-8 md:py-7 sm:py-6 py-5 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-6xl mx-auto px-6 text-center">
         <SectionTitle title={"Meet the Team"} />
 
         <Slider {...settings}>
           {teamMembers.map((member, index) => (
-            <div key={index} className="px-[10px] sm:px-3">
+            <div key={index} className="">
               <TeamCard member={member} />
             </div>
           ))}
@@ -108,7 +108,8 @@ function TeamCard({ member }) {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="md:w-[430px] sm:w-[400px] w-[360px] md:h-[510px] sm:h-[450px] h-[640px] mx-auto mb-6"
+      // className="lg:w-[430px] md:w-[390px] w-[280px] lg:h-[510px] md:h-[570px] h-[670px] mx-auto mb-6"
+      className="lg:w-[430px] md:w-[390px] w-[290px] lg:h-[510px] md:h-[570px] h-[790px] mx-auto gap-20 mb-6"
     >
       <div
         className="w-full h-full relative"
@@ -124,11 +125,11 @@ function TeamCard({ member }) {
         >
           {/* Front */}
           <div
-            className="absolute w-full h-full top-0 left-0 bg-[#A63EE7]/5 border border-white/20 rounded-2xl flex flex-col p-5"
+            className="absolute w-full h-full top-0 left-0 bg-[#A63EE7]/5 border border-white/20 rounded-2xl flex flex-col md:p-5 sm:p-4 p-3"
             style={{ backfaceVisibility: "hidden" }}
           >
             <div className="flex items-center gap-4">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden flex items-center justify-center">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden flex items-center justify-center">
                 <img
                   src={member.headshot}
                   alt={member.name}

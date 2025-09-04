@@ -29,14 +29,17 @@ export const InteractiveCTA2 = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="relative w-full lg:pb-20 md:pb-16 sm:pb-12 pb-8">
+    <div
+      ref={sectionRef}
+      className="relative w-full max-w-7xl mx-auto px-4 lg:pb-20 md:pb-16 sm:pb-12 pb-8"
+    >
       {isInSection ? (
-        <div className="max-w-7xl mx-auto flex justify-center transition-all duration-500">
+        <div className="flex justify-center transition-all duration-200">
           <button
             onClick={scrollToHero}
-            className="flex items-center justify-center w-16 h-16 rounded-full
-                       bg-[#A63EE7] text-white font-medium shadow-lg
-                       transform hover:scale-110 transition-all duration-300"
+            className="flex items-center justify-center md:w-16 sm:w-14 w-12 md:h-16 sm:h-14 h-12 rounded-full
+                     bg-[#A63EE7] text-white font-medium shadow-lg
+                     transform hover:scale-110 transition-all duration-100"
           >
             <svg
               className="w-6 h-6 animate-bounce"
@@ -55,27 +58,32 @@ export const InteractiveCTA2 = () => {
           </button>
         </div>
       ) : (
-        <button
-          onClick={scrollToHero}
-          className="fixed bottom-6 right-6 flex items-center justify-center w-16 h-16 rounded-full
-                     bg-[#A63EE7] text-white font-medium shadow-lg
-                     transform hover:scale-110 transition-all duration-300 z-50"
-        >
-          <svg
-            className="w-6 h-6 animate-bounce"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 10l7-7m0 0l7 7m-7-7v18"
-            />
-          </svg>
-        </button>
+        <div className="fixed bottom-6 inset-x-0 z-50 px-4 xl:mr-4 lg:mr-36 md:mr-44 mr-[98px]">
+          {/* Container with padding */}
+          <div className="w-full max-w-7xl mx-auto flex justify-end">
+            <button
+              onClick={scrollToHero}
+              className="flex items-center justify-center md:w-16 sm:w-14 w-12 md:h-16 sm:h-14 h-12 rounded-full
+                         bg-[#A63EE7] text-white font-medium shadow-lg
+                         transform hover:scale-110 transition-all duration-100"
+            >
+              <svg
+                className="w-6 h-6 animate-bounce"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 10l7-7m0 0l7 7m-7-7v18"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
