@@ -222,7 +222,7 @@ export default function HowItWorks() {
               className={`px-5 py-2 rounded-xl border transition-all duration-300 font-bold${
                 active === index
                   ? "bg-[#A63EE7] text-white border-[#A63EE7] shadow-lg"
-                  : "bg-transparent border-gray-600 text-gray-300 hover:text-white hover:border-purple-400"
+                  : "bg-transparent border-[#6D6D6D] text-gray-300 hover:text-white hover:border-purple-400"
               }`}
             >
               {step.title}
@@ -239,7 +239,7 @@ export default function HowItWorks() {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -30, scale: 0.95 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="max-w-2xl mx-auto p-6 sm:p-8 border border-gray-600 rounded-2xl shadow-lg opacity-80 bg-gradient-to-t from-[#A63EE7]/50 via-black to-[#A63EE7]/30"
+      className="max-w-2xl mx-auto p-6 sm:p-8 border border-[#6D6D6D]/60 rounded-2xl shadow-lg opacity-80 bg-gradient-to-t from-[#A63EE7]/10 via-black to-[#A63EE7]/20"
     >
       <h3 className="text-xl sm:text-2xl font-semibold mb-3">
         {steps[active].title}
