@@ -60,7 +60,7 @@ const SuccessModal = ({
     >
       <div
         className='relative bg-white w-[1180px] h-[850px] flex lg:rounded-3xl overflow-hidden justify-between shadow-lg
-                    flex-col sm:flex-row sm:w-[1080px] sm:h-[700px]'
+                    flex-col sm:flex-row sm:w-[1080px] sm:h-[700px] pb-6'
       >
         {/* Close Button */}
         {showCloseIcon && (
