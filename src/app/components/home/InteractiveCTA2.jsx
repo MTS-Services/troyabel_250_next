@@ -37,7 +37,7 @@ export const InteractiveCTA2 = () => {
         <div className="flex justify-center transition-all duration-200">
           <button
             onClick={scrollToHero}
-            className="flex items-center justify-center md:w-16 sm:w-14 w-12 md:h-16 sm:h-14 h-12 rounded-full
+            className="flex items-center justify-center md:w-14 sm:w-12 w-10 md:h-14 sm:h-12 h-10 rounded-full
                      bg-[#A63EE7] text-white font-medium shadow-lg
                      transform hover:scale-110 transition-all duration-100"
           >
@@ -63,7 +63,7 @@ export const InteractiveCTA2 = () => {
           <div className="w-full max-w-7xl mx-auto flex justify-end">
             <button
               onClick={scrollToHero}
-              className="flex items-center justify-center md:w-16 sm:w-14 w-12 md:h-16 sm:h-14 h-12 rounded-full
+              className="flex items-center justify-center md:w-14 sm:w-12 w-10 md:h-14 sm:h-12 h-10 rounded-full
                          bg-[#A63EE7] text-white font-medium shadow-lg
                          transform hover:scale-110 transition-all duration-100"
             >
