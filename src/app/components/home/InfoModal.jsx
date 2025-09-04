@@ -59,7 +59,7 @@ const validateForm = () => {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black sm:p-6 mt-12  "
       onWheel={(e) => e.stopPropagation()}
     >
-      <div className="relative bg-white w-full max-w-[1180px] max-h-[90vh] flex flex-col lg:rounded-2xl shadow-lg overflow-hidden">
+      <div className="relative bg-white w-full max-w-[1180px] h-[700px] flex flex-col lg:rounded-2xl shadow-lg overflow-hidden">
         {/* Header */}
         <div className="bg-[#A63EE7] text-white px-4 sm:px-6 h-[70px] sm:h-[80px] flex items-center justify-between flex-shrink-0 ">
           <h2 className="text-xl sm:text-3xl font-semibold">
