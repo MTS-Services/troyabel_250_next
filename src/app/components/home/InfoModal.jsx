@@ -56,7 +56,7 @@ const validateForm = () => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black sm:p-6 mt-12  "
+      className="fixed mt-20 inset-0 z-50 flex justify-center items-start pt-10 sm:pt-16 bg-black  "
       onWheel={(e) => e.stopPropagation()}
     >
       <div className="relative bg-white w-full max-w-[1180px] h-[700px] flex flex-col lg:rounded-2xl shadow-lg overflow-hidden">

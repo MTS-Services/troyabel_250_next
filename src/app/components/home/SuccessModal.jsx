@@ -55,7 +55,7 @@ const SuccessModal = ({
 
   return (
     <div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 mt-36 lg:mt-2 md:mt-2 sm:mt-12'
+      className='fixed mt-20 inset-0 z-50 flex justify-center items-start pt-10 sm:pt-16 bg-black'
       onWheel={(e) => e.stopPropagation()}
     >
       <div
@@ -95,9 +95,9 @@ const SuccessModal = ({
               </p>
             </>
           )}
-          {showCloseIcon?"":<div>
-            <button  className='px-6 py-2 border border-white rounded-lg text-white cursor-pointer mt-6 flex gap-2'   onClick={handleCloseAll}>
-             <FaRegArrowAltCircleLeft className='pt-1 text-xl'/> Back to Home 
+          {showCloseIcon ? "" : <div>
+            <button className='px-6 py-2 border border-white rounded-lg text-white cursor-pointer mt-6 flex gap-2' onClick={handleCloseAll}>
+              <FaRegArrowAltCircleLeft className='pt-1 text-xl' /> Back to Home
             </button>
           </div>}
         </div>
@@ -204,9 +204,9 @@ const SuccessModal = ({
                 Need to make a change?{' '}
                 <span
                   onClick={() => {
-                           // close third modal if exists
+                    // close third modal if exists
                     onReshedule?.();       // call reschedule function if exists
-                               // close SuccessModal
+                    // close SuccessModal
                   }}
                   className='underline cursor-pointer text-[#A63EE7]'
                 >
