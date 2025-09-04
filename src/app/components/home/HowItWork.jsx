@@ -219,7 +219,7 @@ export default function HowItWorks() {
             <button
               key={index}
               onClick={() => setActive(index)}
-              className={`px-5 py-2 rounded-xl border transition-all duration-300 ${
+              className={`px-5 py-2 rounded-xl border transition-all duration-300 font-bold${
                 active === index
                   ? "bg-[#A63EE7] text-white border-[#A63EE7] shadow-lg"
                   : "bg-transparent border-gray-600 text-gray-300 hover:text-white hover:border-purple-400"

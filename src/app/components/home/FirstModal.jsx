@@ -139,11 +139,11 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond, time, setTime }) => {
 
           <div className="flex items-center gap-4">
             <Image
-              src="/image/testimonial/Troy2025headshot.JPG"
+              src="/image/team/headshot.jpg"
               alt="Doctor"
-              width={60}
-              height={60}
-              className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg mb-2 sm:mb-0"
+              width={80}
+              height={80}
+              className="w-16 h-16 sm:w-24 sm:h-24 rounded-lg mb-2 sm:mb-0"
             />
             <div className="text-left">   {/* <-- Changed here */}
               <h2 className="text-lg sm:text-xl font-bold text-[#ACADBC]">

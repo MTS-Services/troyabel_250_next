@@ -74,7 +74,7 @@ const validateForm = () => {
             {/* Top Row: Image + Name */}
             <div className="flex items-center gap-4 mb-4 w-full">
               <Image
-                src="/image/testimonial/Troy2025headshot.JPG"
+                src="/image/team/headshot.jpg"
                 alt="Doctor"
                 width={50}
                 height={50}
@@ -218,7 +218,7 @@ const validateForm = () => {
                 <button
                   type="button"
                   onClick={handleConfirm}
-                  className="px-6 py-2 rounded-lg bg-[#A63EE7] text-white hover:bg-purple-800"
+                  className="px-6 py-2 rounded-lg border-[#A63EE7] bg-[#A63EE7] text-white hover:bg-purple-800"
                 >
                   Confirm
                 </button>
