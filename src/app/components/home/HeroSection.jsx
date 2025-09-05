@@ -74,7 +74,10 @@ export default function LenisPage() {
           <DarkVeil />
         </div>
         {/* UPDATED: Reduced scroll container height for the two animations */}
-        <div className="relative h-[300vh] w-full -mt-[100vh]">
+        <div
+          className="relative h-[300vh] w-full -mt-[100vh]"
+          // className="relative md:h-[200vh] h-[280vh] w-full -mt-[100vh]"
+        >
           <div className="sticky top-0 z-10 mx-auto flex h-screen w-full max-w-4xl flex-col items-center justify-center gap-6 px-4">
             {/* --- Section 1 Content --- */}
             <motion.div
