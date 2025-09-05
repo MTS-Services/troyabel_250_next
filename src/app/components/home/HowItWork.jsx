@@ -258,7 +258,7 @@ export default function HowItWorks() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -30, scale: 0.95 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="max-w-2xl mx-auto p-6 sm:p-8 border border-[#6D6D6D]/60 rounded-2xl shadow-lg opacity-80 bg-gradient-to-t from-[#A63EE7]/10 via-black to-[#A63EE7]/20"
+              className="max-w-2xl h-[180px] mx-auto p-6 sm:p-8 border border-[#6D6D6D]/60 rounded-2xl shadow-lg opacity-80 bg-gradient-to-t from-[#A63EE7]/10 via-black to-[#A63EE7]/20"
             >
               <h3 className="text-xl sm:text-2xl font-semibold mb-3">
                 {steps[active].title}

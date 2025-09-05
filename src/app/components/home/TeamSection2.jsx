@@ -6,6 +6,30 @@ import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
 import { SectionTitle } from "../SectionTitle";
 
+// Custom Left Arrow
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} ml-4 z-10`}
+      style={{ ...style }}
+      onClick={onClick}
+    />
+  );
+}
+
+// Custom Right Arrow
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={`${className} mr-4 z-10`}
+      style={{ ...style }}
+      onClick={onClick}
+    />
+  );
+}
+
 const teamMembers = [
   {
     name: "Dr. Troy Abel (Dr. T)",
@@ -66,6 +90,8 @@ export default function TeamSection() {
     speed: 600,
     slidesToShow: slidesToShow,
     slidesToScroll: 1,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
   };
 
   return (
