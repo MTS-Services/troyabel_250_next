@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -98,9 +99,6 @@ export default function LenisPage() {
                 individualized 1:1 coaching and design training to help you
                 prepare for a successful career in UX.
               </h6>
-              <h6 className="text-center text-lg text-white/60 md:max-w-[660px] sm:max-w-[700px] max-w-[380px]">
-                You are an individual. Your UX education should be too.
-              </h6>
               <div className="">
                 <OpenAppointmentButton />
               </div>
@@ -112,13 +110,16 @@ export default function LenisPage() {
                 scale: secondSection_Scale,
                 opacity: secondSection_Opacity,
               }}
-              className="absolute flex flex-col items-center justify-center gap-6"
+              className="absolute flex flex-col items-center justify-center gap-6 md:mt-80"
             >
               <h2 className="bg-gradient-to-r from-white leading-tight to-slate-400 bg-clip-text text-center text-4xl md:text-5xl lg:text-6xl font-medium text-transparent">
                 “User Experience Bootcamps :
                 <span className="text-[#A63EE7]"> A Dead-End</span>”
               </h2>
               <h6 className="text-center text-lg text-white/70 max-w-2xl">
+                You are an individual. Your UX education should be too.
+              </h6>
+              <h6 className="text-center text-lg text-white/60 md:max-w-[660px] sm:max-w-[700px] max-w-[380px]">
                 .UX Bootcamps oten provide generic, “one size fits all”
                 training, resulting in portfolios that lack uniqueness. Our
                 program is designed to help you distinguish yourself amid the
