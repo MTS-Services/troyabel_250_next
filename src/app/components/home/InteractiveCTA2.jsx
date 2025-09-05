@@ -5,7 +5,7 @@ export const InteractiveCTA2 = () => {
   const sectionRef = useRef(null);
 
   const scrollToHero = () => {
-    const heroSection = document.getElementById("hero");
+    const heroSection = document.getElementById("intro");
     if (heroSection) {
       heroSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }

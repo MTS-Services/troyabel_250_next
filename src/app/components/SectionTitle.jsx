@@ -34,7 +34,7 @@ export const SectionTitle = ({ title, paragraph }) => {
 
       <motion.p
         variants={fadeUp}
-        className="max-w-[380px] md:max-w-[500px] lg:max-w-[500px] mb-6 sm:mb-8 md:mb-10 lg:mb-12 mx-auto text-center text-base font-normal text-white"
+        className={`max-w-[380px] md:max-w-[540px] lg:max-w-[540px] mb-6 sm:mb-8 md:mb-10 lg:mb-12 mx-auto text-center text-base font-normal text-white`}
       >
         {paragraph}
       </motion.p>

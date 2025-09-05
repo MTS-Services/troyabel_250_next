@@ -18,7 +18,7 @@ import SuccessModal from './SuccessModal';
 
 
 const navData = [
-  { id: 'hero', title: 'Hero', href: '#hero' },
+  { id: 'intro', title: 'Intro', href: '#intro' },
   { id: 'solution', title: 'Solution', href: '#solution' },
   { id: 'how-it-works', title: 'How it works', href: '#how-it-works' },
   { id: 'team', title: 'Team', href: '#team' },

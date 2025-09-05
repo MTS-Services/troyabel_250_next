@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -68,7 +67,7 @@ export default function LenisPage() {
   );
 
   return (
-    <div id="hero">
+    <div id="intro">
       <div className="relative">
         <div className="sticky inset-0 z-0 h-screen w-full">
           <DarkVeil />
@@ -95,15 +94,12 @@ export default function LenisPage() {
                 <span className="text-[#A63EE7]"> UX Career.</span>
               </motion.h2>
               <h6 className="text-center text-lg text-white/60 md:max-w-[760px] sm:max-w-[740px] max-w-[380px]">
-                Industry leaders with experience at major corporations and a
-                history of teaching design and UX at top universities
-                nationwide.
+                Forget one-size-fits-all UX bootcamps. Our team provides
+                individualized 1:1 coaching and design training to help you
+                prepare for a successful career in UX.
               </h6>
               <h6 className="text-center text-lg text-white/60 md:max-w-[660px] sm:max-w-[700px] max-w-[380px]">
-                Forget one-size-fits-all bootcamps. Our team provides
-                individualized coaching to build a unique portfolio that gets
-                you hired and strategic mentoring to help you level up into a
-                senior role.
+                You are an individual. Your UX education should be too.
               </h6>
               <div className="">
                 <OpenAppointmentButton />
@@ -123,9 +119,10 @@ export default function LenisPage() {
                 <span className="text-[#A63EE7]"> A Dead-End</span>”
               </h2>
               <h6 className="text-center text-lg text-white/70 max-w-2xl">
-                “The collision of higher-ed bloat, Silicon Valley's appetite for
-                disruption, and corporate-scale training led to thousands of
-                largely unemployable UX designers” – Jon Kolko
+                .UX Bootcamps oten provide generic, “one size fits all”
+                training, resulting in portfolios that lack uniqueness. Our
+                program is designed to help you distinguish yourself amid the
+                multitude of UX candidates.
               </h6>
               <div className="">
                 <OpenAppointmentButton />

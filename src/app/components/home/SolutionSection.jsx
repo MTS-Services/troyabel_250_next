@@ -63,7 +63,7 @@ export default function SolutionSection() {
         <SectionTitle
           heading={"Solution"}
           paragraph={
-            "Imagine a future where you are not just changing jobs, but transforming your career."
+            "Our team of educators and industry leaders offers comprehensive education and resources to support your successful career development in the field of UX."
           }
           title={"Your Bridge to a Fulfilling Career in UX"}
         />
