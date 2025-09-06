@@ -189,7 +189,7 @@ const PricingCard = ({ plan, setFirstOpen }) => {
       {hasMoreFeatures && (
         <button
           onClick={toggleExpanded}
-          className='flex items-center justify-center gap-2 mt-7 cursor-pointer text-sm font-semibold text-[#A63EE7] hover:text-[#A63EE9] transition-colors'
+          className='flex items-center justify-center gap-2 mt-4 cursor-pointer text-base font-semibold text-[#A63EE7] hover:text-[#A63EE9] transition-colors'
         >
           {isExpanded ? 'See less' : 'See all details'}
           <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
@@ -240,7 +240,7 @@ const PricingSection = () => {
 
   return (
     <>
-      <section id='pricing' className='max-w-7xl mx-auto my-16 px-6'>
+      <section id='pricing' className='max-w-7xl mx-auto'>
         <SectionTitle
           paragraph="Choose the plan that's right for you. All plans are flexible and can be customized."
           title='Coaching Plans'
