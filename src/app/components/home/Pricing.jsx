@@ -239,7 +239,6 @@ const PricingSection = () => {
   };
 
   return (
-    // Main Pricing Section
     <>
       <section id='pricing' className='max-w-7xl mx-auto my-16 px-6'>
         <SectionTitle
