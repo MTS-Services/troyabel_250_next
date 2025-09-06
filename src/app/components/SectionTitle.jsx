@@ -40,7 +40,7 @@ export const SectionTitle = ({ title, paragraph }) => {
         variants={fadeUp}
         className='w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[380px] md:max-w-[450px] lg:max-w-[500px] xl:max-w-[550px]
                    mx-auto text-center 
-                   mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14
+                   mb-6 sm:mb-8 md:mb-10 lg:mb-220 xl:mb-14
                    text-sm xs:text-sm sm:text-base md:text-base lg:text-lg xl:text-lg
                    leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed
                    font-normal text-white px-2 sm:px-0'

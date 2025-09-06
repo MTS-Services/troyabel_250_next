@@ -2,8 +2,6 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SectionTitle } from '../SectionTitle';
-import Modal from './Modal';
 import { cn } from '@/app/lib/utils';
 import {
   Check,
@@ -13,12 +11,63 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { FiArrowRight } from 'react-icons/fi';
+import Modal from './Modal';
 import FirstModal from './FirstModal';
 import InfoModal from './InfoModal';
 import SuccessModal from './SuccessModal';
+import { H3 } from '../HeadingStyle';
 
+// SectionTitle Component
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+const SectionTitle = ({ title, paragraph }) => {
+  return (
+    <motion.section
+      initial='hidden'
+      whileInView='visible'
+      viewport={{ once: true, amount: 0.35 }}
+      variants={container}
+      className='text-center px-4 sm:px-6 lg:px-8'
+    >
+      <motion.div variants={fadeUp}>
+        <H3
+          className='w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[400px] md:max-w-[600px] lg:max-w-[700px] xl:max-w-[900px]
+                     mx-auto text-center mb-3 sm:mb-4 md:mb-5 lg:mb-6
+                     text-[20px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[36px] 2xl:text-[40px]
+                     leading-tight sm:leading-tight md:leading-tight lg:leading-tight xl:leading-tight
+                     text-[#6D6D6D]'
+          nameH3={title}
+        />
+      </motion.div>
+      <motion.p
+        variants={fadeUp}
+        className='w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[380px] md:max-w-[450px] lg:max-w-[500px] xl:max-w-[550px]
+                   mx-auto text-center
+                   mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14
+                   text-sm xs:text-sm sm:text-base md:text-base lg:text-lg xl:text-lg
+                   leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed
+                   font-normal text-white px-2 sm:px-0'
+      >
+        {paragraph}
+      </motion.p>
+    </motion.section>
+  );
+};
+
+// Pricing Plans Data
 const pricingPlans = [
-  // Your pricingPlans array remains exactly the same...
   {
     title: 'Portfolio Power-Up',
     icon: Sparkles,
@@ -56,7 +105,7 @@ const pricingPlans = [
       'Customized portfolio design case studies',
       'Portfolio presentation guidelines',
       'Interviewing coaching',
-      'Upon completion of the plan, you’ll continue to have access to our team for 3 months.',
+      "Upon completion of the plan, you'll continue to have access to our team for 3 months.",
     ],
     isFeatured: true,
   },
@@ -79,7 +128,7 @@ const pricingPlans = [
 
 const MAX_VISIBLE_FEATURES = 3;
 
-// --- UPDATED: PricingCard component with centered text ---
+// PricingCard Component
 const PricingCard = ({ plan, setFirstOpen }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const hasMoreFeatures = plan.features.length > MAX_VISIBLE_FEATURES;
@@ -91,33 +140,37 @@ const PricingCard = ({ plan, setFirstOpen }) => {
   return (
     <div
       className={cn(
-        'flex flex-col p-8 rounded-2xl bg-[#1C1C1E] border border-white/10 transition-transform duration-300 hover:-translate-y-2',
+        'flex flex-col p-4 sm:p-6 lg:p-8 rounded-2xl bg-[#1C1C1E] border border-white/10 transition-transform duration-300 hover:-translate-y-2 h-full',
         plan.isFeatured && 'ring-2 ring-[#A63EE7]'
       )}
     >
-      {/* --- MODIFIED: Added justify-center to center the header --- */}
+      {/* Header */}
       <div className='flex items-center gap-3'>
-        <plan.icon className='w-6 h-6 text-[#A63EE7]' />
-        <h3 className='text-md font-semibold text-white'>{plan.title}</h3>
+        <plan.icon className='w-5 h-5 sm:w-6 sm:h-6 text-[#A63EE7] flex-shrink-0' />
+        <h3 className='text-sm sm:text-md lg:text-lg font-semibold text-white'>
+          {plan.title}
+        </h3>
       </div>
 
-      {/* --- MODIFIED: Added text-center to center the price --- */}
-      <div className='mt-6'>
-        <span className='text-3xl font-bold text-white'>{plan.price}</span>
+      {/* Price */}
+      <div className='mt-4 sm:mt-6'>
+        <span className='text-2xl sm:text-3xl lg:text-3xl font-bold text-white'>
+          {plan.price}
+        </span>
       </div>
 
-      {/* --- MODIFIED: Added text-center to the description --- */}
-      <p className='mt-4 h-52 text-base text-gray-400'>{plan.description}</p>
+      {/* Description */}
+      <p className='mt-3 sm:mt-4 text-sm sm:text-base text-gray-400 flex-grow min-h-[8rem] sm:min-h-[10rem] lg:min-h-[13rem]'>
+        {plan.description}
+      </p>
 
-      {/* --- MODIFIED: Added flex justify-center to center the button --- */}
-      <div className='my-8 flex justify-center'>
-        {/**Button start */}
-
+      {/* Button */}
+      <div className='my-6 sm:my-8 flex justify-center'>
         <button
           onClick={() => setFirstOpen(true)}
-          className='relative flex items-center justify-center gap-2 w-full py-2 rounded-lg
+          className='relative flex items-center justify-center gap-2 w-full py-2 sm:py-3 px-4 rounded-lg
                                border border-[#A63EE7] bg-[#A63EE7] text-white font-medium overflow-hidden
-                               transition-all duration-500 ease-out group'
+                               transition-all duration-500 ease-out group text-sm sm:text-base'
         >
           <span
             className='absolute inset-0 bg-black rounded-lg scale-x-0 origin-left
@@ -143,21 +196,22 @@ const PricingCard = ({ plan, setFirstOpen }) => {
                                    transform opacity-0 translate-x-4 group-hover:translate-x-0
                                    group-hover:opacity-100 group-hover:text-white'
             >
-              <FiArrowRight size={18} />
+              <FiArrowRight size={16} className='sm:w-[18px] sm:h-[18px]' />
             </span>
           </span>
         </button>
-        {/**Button End */}
       </div>
 
-      {/* Features List (Intentionally left-aligned for readability) */}
+      {/* Features List */}
       <hr className='border-white/10' />
-      <div className='mt-8'>
-        <ul className='space-y-3'>
+      <div className='mt-3 sm:mt-4'>
+        <ul className='space-y-2 sm:space-y-3'>
           {plan.features.slice(0, MAX_VISIBLE_FEATURES).map((feature, idx) => (
-            <li key={idx} className='flex items-start gap-3'>
-              <Check className='w-5 h-5 text-green-500 shrink-0 mt-1' />
-              <span className='text-gray-300'>{feature}</span>
+            <li key={idx} className='flex items-start gap-2 sm:gap-3'>
+              <Check className='w-4 h-4 sm:w-5 sm:h-5 text-green-500 shrink-0 mt-0.5 sm:mt-1' />
+              <span className='text-sm sm:text-base text-gray-300'>
+                {feature}
+              </span>
             </li>
           ))}
         </ul>
@@ -165,16 +219,18 @@ const PricingCard = ({ plan, setFirstOpen }) => {
         <AnimatePresence>
           {isExpanded && hasMoreFeatures && (
             <motion.ul
-              className='space-y-4 mt-4'
+              className='space-y-2 sm:space-y-4 mt-3 sm:mt-4'
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.4, ease: 'easeInOut' }}
             >
               {plan.features.slice(MAX_VISIBLE_FEATURES).map((feature, idx) => (
-                <li key={idx} className='flex items-start gap-3'>
-                  <Check className='w-5 h-5 text-green-500 shrink-0 mt-1' />
-                  <span className='text-gray-300'>{feature}</span>
+                <li key={idx} className='flex items-start gap-2 sm:gap-3'>
+                  <Check className='w-4 h-4 sm:w-5 sm:h-5 text-green-500 shrink-0 mt-0.5 sm:mt-1' />
+                  <span className='text-sm sm:text-base text-gray-300'>
+                    {feature}
+                  </span>
                 </li>
               ))}
             </motion.ul>
@@ -189,11 +245,11 @@ const PricingCard = ({ plan, setFirstOpen }) => {
       {hasMoreFeatures && (
         <button
           onClick={toggleExpanded}
-          className='flex items-center justify-center gap-2 mt-4 cursor-pointer text-base font-semibold text-[#A63EE7] hover:text-[#A63EE9] transition-colors'
+          className='flex items-center justify-center gap-2 mt-3 sm:mt-4 cursor-pointer text-xs sm:text-base font-semibold text-[#A63EE7] hover:text-[#A63EE9] transition-colors'
         >
           {isExpanded ? 'See less' : 'See all details'}
           <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
-            <ChevronDown className='w-4 h-4' />
+            <ChevronDown className='w-3 h-3 sm:w-4 sm:h-4' />
           </motion.div>
         </button>
       )}
@@ -201,7 +257,7 @@ const PricingCard = ({ plan, setFirstOpen }) => {
   );
 };
 
-// Main Pricing Section Component (No changes needed here)
+// Main Pricing Section Component
 const PricingSection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [firstOpen, setFirstOpen] = useState(false);
@@ -218,7 +274,7 @@ const PricingSection = () => {
     date: '',
     time: '',
     day: '',
-  }); // To store selected date and time
+  });
 
   const closeAll = () => {
     setFirstOpen(false);
@@ -231,6 +287,7 @@ const PricingSection = () => {
       interest: '',
     });
   };
+
   const reschedule = () => {
     setSecondOpen(false);
     setThirdOpen(false);
@@ -240,19 +297,31 @@ const PricingSection = () => {
 
   return (
     <>
-      <section id='pricing' className='max-w-7xl mx-auto'>
-        <SectionTitle
-          paragraph="Choose the plan that's right for you. All plans are flexible and can be customized."
-          title='Coaching Plans'
-        />
+      <section
+        id='pricing'
+        className='min-h-screen flex flex-col justify-center max-w-7xl mx-auto py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8'
+      >
+        <div className='flex flex-col justify-center flex-grow'>
+          <SectionTitle
+            paragraph="Choose the plan that's right for you. All plans are flexible and can be customized."
+            title='Coaching Plans'
+          />
 
-        <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mt-16'>
-          {pricingPlans.map((plan, index) => (
-            <PricingCard key={index} plan={plan} setFirstOpen={setFirstOpen} />
-          ))}
+          {/* Responsive Grid Layout */}
+          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12 lg:mt-16 auto-rows-fr'>
+            {pricingPlans.map((plan, index) => (
+              <PricingCard
+                key={index}
+                plan={plan}
+                setFirstOpen={setFirstOpen}
+              />
+            ))}
+          </div>
         </div>
+
         <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
       </section>
+
       <div className='z-50 fixed mt-4'>
         <FirstModal
           time={time}
