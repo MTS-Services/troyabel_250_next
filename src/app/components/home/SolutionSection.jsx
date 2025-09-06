@@ -94,9 +94,6 @@ export default function SolutionSection() {
           </motion.div>
         ))}
       </div>
-
-      {/* Next Section */}
-      {/* <SolutionSectionTwo /> */}
     </section>
   );
 }
