@@ -299,7 +299,7 @@ const PricingSection = () => {
     <>
       <section
         id='pricing'
-        className='min-h-screen flex flex-col justify-center max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:px-4'
+        className='min-h-screen flex flex-col justify-center max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-6 '
       >
         <div className='flex flex-col justify-center flex-grow'>
           <SectionTitle
@@ -308,7 +308,7 @@ const PricingSection = () => {
           />
 
           {/* Responsive Grid Layout */}
-          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 sm:mt-12 auto-rows-fr'>
+          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 '>
             {pricingPlans.map((plan, index) => (
               <PricingCard
                 key={index}
