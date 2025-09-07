@@ -19,7 +19,7 @@ html {
 }
 
 .scrollbar-purple::-webkit-scrollbar-thumb {
-  background-color: #A63EE7; /* purple color */
+  background-color: #a63ee7; /* purple color */
   border-radius: 9999px; /* rounded scrollbar */
   border: 2px solid transparent; /* optional spacing around thumb */
 }
@@ -27,5 +27,5 @@ html {
 /* Firefox */
 .scrollbar-purple {
   scrollbar-width: thin;
-  scrollbar-color: #A63EE7 transparent;
+  scrollbar-color: #a63ee7 transparent;
 }
