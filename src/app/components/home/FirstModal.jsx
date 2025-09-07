@@ -163,7 +163,8 @@ const FirstModal = ({ isOpen, onClose, onOpenSecond, time, setTime }) => {
               alt="Logo"
               width={80}
               height={80}
-              className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mr-0 lg:mr-30"
+              // className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mr-0 lg:mr-30"
+              className="sm:w-20 sm:h-20 w-24 h-24 rounded-full mr-0 lg:mr-30"
             />
           </div>
         </div>
