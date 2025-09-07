@@ -8,7 +8,7 @@ import { InteractiveCTA2 } from "./components/home/InteractiveCTA2";
 import HeroSection from "./components/home/HeroSection";
 import { useEffect } from "react";
 import Lenis from "lenis";
-import TeamSection2 from "./components/home/TeamSection2";
+import TeamSection from "./components/home/TeamSection";
 
 export default function Home() {
   useEffect(() => {
@@ -39,8 +39,7 @@ export default function Home() {
       <main className="">
         <SolutionSection />
         <HowItWorks />
-        <TeamSection2 />
-        {/* <TeamSection /> */}
+        <TeamSection />
         <PricingSection />
         <FAQ />
         <InteractiveCTA2 />
