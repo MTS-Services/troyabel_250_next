@@ -44,7 +44,7 @@ const SectionTitle = ({ title, paragraph }) => {
       <motion.div variants={fadeUp}>
         <H3
           className='w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[400px] md:max-w-[600px] lg:max-w-[700px] xl:max-w-[900px]
-                     mx-auto text-center mb-3 sm:mb-4 md:mb-5 lg:mb-6
+                     mx-auto text-center mb-3 sm:mb-4 md:mb-5
                      text-[20px] xs:text-[22px] sm:text-[26px] md:text-[30px] lg:text-[32px] xl:text-[36px] 2xl:text-[40px]
                      leading-tight sm:leading-tight md:leading-tight lg:leading-tight xl:leading-tight
                      text-[#6D6D6D]'
@@ -55,7 +55,7 @@ const SectionTitle = ({ title, paragraph }) => {
         variants={fadeUp}
         className='w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[380px] md:max-w-[450px] lg:max-w-[500px] xl:max-w-[550px]
                    mx-auto text-center
-                   mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-14
+                   mb-6 sm:mb-8 md:mb-10 lg:mb-2 xl:mb-4
                    text-sm xs:text-sm sm:text-base md:text-base lg:text-lg xl:text-lg
                    leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-relaxed
                    font-normal text-white px-2 sm:px-0'
@@ -299,7 +299,7 @@ const PricingSection = () => {
     <>
       <section
         id='pricing'
-        className='min-h-screen flex flex-col justify-center max-w-7xl mx-auto py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8'
+        className='min-h-screen flex flex-col justify-center max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:px-4'
       >
         <div className='flex flex-col justify-center flex-grow'>
           <SectionTitle
@@ -308,7 +308,7 @@ const PricingSection = () => {
           />
 
           {/* Responsive Grid Layout */}
-          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12 lg:mt-16 auto-rows-fr'>
+          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 sm:mt-12 auto-rows-fr'>
             {pricingPlans.map((plan, index) => (
               <PricingCard
                 key={index}
